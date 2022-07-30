@@ -8,6 +8,7 @@ import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:fluwx/fluwx.dart';
+import 'about.dart';
 import 'api/record.dart';
 import 'const/secret_config.dart';
 import 'util/date.dart';
@@ -147,6 +148,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/history': (BuildContext context) => const History(),
         '/login': (BuildContext context) => const Login(),
+        '/about': (BuildContext context) => const About(),
       },
     );
   }

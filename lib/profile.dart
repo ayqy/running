@@ -67,7 +67,8 @@ class _ProfileState extends State<Profile> {
   }
 
   _onAboutPressed() {
-    log('about');
+    Navigator.of(context).pop();
+    Navigator.pushNamed(context, '/about');
   }
 
   _onLogoutPressed() async {
