@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:package_info_plus/package_info_plus.dart';
 
+import 'const/ui.dart';
+
 
 class About extends StatefulWidget {
   const About({Key? key,}) : super(key: key);
@@ -55,7 +57,9 @@ class _AboutState extends State<About> {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
         title: const Text("关于"),
+        flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
       ),
       body: Container(
         padding: const EdgeInsets.all(10),

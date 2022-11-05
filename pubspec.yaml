@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 0.0.1+1
+version: 0.0.2+1
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -47,7 +47,6 @@ dependencies:
   flutter_secure_storage: ^5.0.2
   just_audio: ^0.9.24
   provider: ^6.0.3
-  flutter_advanced_avatar: ^1.1.0
   flutter_easyloading: ^3.0.5
   dio: ^4.0.6
   fluwx: ^3.9.0+2
@@ -55,6 +54,13 @@ dependencies:
   connectivity_plus: ^2.3.6
   email_validator: ^2.0.1
   package_info_plus: ^1.4.3
+  xxtea: ^2.1.0
+  image_picker: ^0.8.5+3
+  circular_profile_avatar: ^2.0.5
+  sliding_up_panel:
+    git:
+      url: https://github.com/qixotic/sliding_up_panel
+      ref: v2.0.0+1-Pull303
 
 dev_dependencies:
   flutter_test:

@@ -11,8 +11,8 @@ class ColorUtil {
     const Color HEAVY_YELLOW = Color.fromRGBO(255, 236, 61, MAX_OPACITY);
     const Color RED = Color.fromRGBO(255, 77, 79, MIN_OPACITY);
     const Color HEAVY_RED = Color.fromRGBO(255, 77, 79, MAX_OPACITY);
-    // 10分钟1公里是快走的速度，作为慢速档位
-    const double SLOW_SPEED = 1000 / (10 * 60);
+    // 9分钟1公里是快走的速度，作为慢速档位
+    const double SLOW_SPEED = 1000 / (9 * 60);
     // 5分半1公里是快跑的速度，作为快速档位
     const double FAST_SPEED = 1000 / (5.5 * 60);
 
@@ -48,5 +48,9 @@ class ColorUtil {
     double averageSpped = (startSpeed + endSpeed) / 2;
     Color color = mapSpeedToColor(averageSpped);
     return color;
+  }
+
+  static Color withOpacity(Color color, double opacity) {
+    return Color.fromRGBO(color.red, color.green, color.blue, opacity);
   }
 }

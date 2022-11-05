@@ -111,7 +111,7 @@ class MainButtonWidgetState extends State<MainButton> {
           countdown != '' ? countdown : 'Go',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: countdown != '' ? 72 : 60,
+            fontSize: countdown != '' ? 72 : 48,
             color: Colors.white,
           ),
         );
@@ -129,8 +129,8 @@ class MainButtonWidgetState extends State<MainButton> {
         Widget? content = _buildButtonContent(model.status);
 
         return SizedBox(
-          width: isIdle ? 120 : 60,
-          height: isIdle ? 120 : 60,
+          width: isIdle ? 90 : 60,
+          height: isIdle ? 90 : 60,
           child: content != null ? FloatingActionButton(
             backgroundColor: isIdle ? Colors.orange : Colors.red,
             onPressed: () { _onPressed(model); },

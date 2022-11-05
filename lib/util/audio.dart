@@ -31,13 +31,22 @@ class AudioUtil {
 }
 
 class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
+  // static final _item = MediaItem(
+  //   id: 'http://cdn.ayqy.net/music%2F%E8%8A%B1%E3%81%9F%E3%82%93%20-%20%E5%8D%83%E6%9C%AC%E6%A1%9C.mp3',
+  //   album: "百狐千樂",
+  //   title: "千本桜",
+  //   artist: "花たん",
+  //   duration: const Duration(milliseconds: 243000),
+  //   artUri: Uri.parse('http://cdn.ayqy.net/music/%E5%8D%83%E6%9C%AC%E6%A1%9C.jpg'),
+  // );
+
   static final _item = MediaItem(
-    id: 'http://cdn.ayqy.net/music%2F%E8%8A%B1%E3%81%9F%E3%82%93%20-%20%E5%8D%83%E6%9C%AC%E6%A1%9C.mp3',
-    album: "百狐千樂",
-    title: "千本桜",
-    artist: "花たん",
-    duration: const Duration(milliseconds: 243000),
-    artUri: Uri.parse('http://cdn.ayqy.net/music/%E5%8D%83%E6%9C%AC%E6%A1%9C.jpg'),
+    id: 'http://cdn.ayqy.net/music/%E8%A5%BF%E5%AE%89%E7%88%B1%E6%83%85%E6%95%85%E4%BA%8B.mp4',
+    album: "没有人比我更爱你",
+    title: "西安爱情故事",
+    artist: "王筝",
+    duration: const Duration(milliseconds: 232000),
+    artUri: Uri.parse('http://cdn.ayqy.net/music/%E7%8E%8B%E7%AD%9D.jpeg'),
   );
 
   final _player = AudioPlayer();

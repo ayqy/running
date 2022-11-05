@@ -27,7 +27,7 @@ class AccountAPI {
     else if (result['uid'] != null && result['token'] != null) {
       // 保存好token
       await Storage.set(authKey, jsonEncode(result)).then((_) {
-        return AccountUtil.init();
+        return AccountUtil.cache(result);
       });
     }
     return result;
@@ -74,17 +74,13 @@ class AccountAPI {
     }
     return result;
   }
-  static query({startIndex, pageSize = 10, Map? conditions}) async {
+  static query({Map? conditions}) async {
     String url = "$_host/accounts/query";
     if (conditions == null) {
       conditions = {};
     }
     Map data = {};
     data.addAll(conditions);
-    if (startIndex != null) {
-      data['startIndex'] = startIndex;
-    }
-    data['pageSize'] = pageSize;
     var result = await NetworkUtil.post(url, data);
     if (result == false) {
       log('【查询失败】');

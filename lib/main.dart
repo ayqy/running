@@ -6,8 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:amap_flutter_location/amap_flutter_location.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:provider/provider.dart';
 import 'package:fluwx/fluwx.dart';
+import 'const/sport_type.dart';
+import 'const/ui.dart';
+import 'settings.dart';
+import 'account_settings.dart';
 import 'about.dart';
 import 'api/record.dart';
 import 'const/secret_config.dart';
@@ -148,6 +153,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/history': (BuildContext context) => const History(),
         '/login': (BuildContext context) => const Login(),
+        '/account_settings': (BuildContext context) => const AccountSettings(),
+        '/settings': (BuildContext context) => const Settings(),
         '/about': (BuildContext context) => const About(),
       },
     );
@@ -177,6 +184,11 @@ class CustomFloatingActionButtonLocation extends FloatingActionButtonLocation {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final double _initFabHeight = UIConsts.SLIDING_PANEL_INITIAL_HEIGHT;
+  double _fabHeight = 0;
+  double _panelHeightOpen = 0;
+  final double _panelHeightClosed = UIConsts.SLIDING_PANEL_INITIAL_HEIGHT;
+
   GlobalKey<DashboardWidgetState> _dashboardKey = GlobalKey<DashboardWidgetState>();
   GlobalKey<MapWidgetAMapState> _mapKey = GlobalKey<MapWidgetAMapState>();
   GlobalKey<MainButtonWidgetState> _mainButtonKey = GlobalKey<MainButtonWidgetState>();
@@ -221,11 +233,17 @@ class _MyHomePageState extends State<MyHomePage> {
       int completedKm = (totalDistance / 1000).truncate();
       // 秒 转 xx分xx秒
       if (completedKm > lastCompletedKm) {
+        // 每跑过1km，都临时存一下，防止数据丢失
+        _saveRecordBackup(model);
         int now = DateTime.now().millisecondsSinceEpoch;
         int startTime = model.getStartTime();
         int lastKmTimeSpent = lastKmCompletedTime == 0 ? now - startTime : now - lastKmCompletedTime;
+        // 记录每公里配速
+        int lastKMDuration = (lastKmTimeSpent / 1000).truncate();
+        model.recordKMDurations(lastKMDuration);
         String formattedLastKmTimeSpent = Formatter.formatDurationAsTTSString(lastKmTimeSpent);
-        speak('你已跑步$completedKm公里，最近一公里用时$formattedLastKmTimeSpent，加油');
+        Map sportType = model.sportType;
+        speak('你已${sportType == SportType.running ? '跑步' : '骑行'}$completedKm公里，最近一公里用时$formattedLastKmTimeSpent，加油');
         lastCompletedKm = completedKm;
         lastKmCompletedTime = now;
       }
@@ -269,8 +287,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _saveRecord(RunningModel model) {
+    const int minMinutes = 3;
+    if (model.getDuration() < minMinutes * 60) {
+      // 时间太短，不计入历史记录
+      return;
+    }
+
     Storage.get(localKey).then((String value) {
-      Map record = model.toMap();
       List records = [];
       if (value.isNotEmpty) {
         try {
@@ -278,12 +301,13 @@ class _MyHomePageState extends State<MyHomePage> {
         } catch(error) {
           log(error);
           // 历史记录坏了，另存当次记录
-          Storage.set(tmpLocalKey, jsonEncode(record)).then((_) {
+          _saveRecordBackup(model).then((_) {
             toast('记得放松肌肉，补充水分哦！');
           });
           return;
         }
       }
+      Map record = model.toMap();
       records.add(record);
       Storage.set(localKey, jsonEncode(records)).then((_) {
         toast('记得放松肌肉，补充水分哦');
@@ -296,6 +320,11 @@ class _MyHomePageState extends State<MyHomePage> {
         }
       });
     });
+  }
+
+  _saveRecordBackup(RunningModel model) {
+    Map record = model.toMap();
+    return Storage.set(tmpLocalKey, jsonEncode(record));
   }
 
   stop(RunningModel model, [bool saveRecord = true]) {
@@ -365,6 +394,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   initState() {
     super.initState();
+    _fabHeight = _initFabHeight;
     // 监听定位变化
     MapLocationLocation.onReady((location) {
       double latitude = double.parse(location['latitude'].toString());
@@ -374,77 +404,128 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget _panel(ScrollController sc) {
+    return MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: ListView(
+          controller: sc,
+          children: [
+            const SizedBox(
+              height: 5.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 30,
+                  height: 5,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: const BorderRadius.all(Radius.circular(12.0))),
+                ),
+              ],
+            ),
+            Dashboard(
+              key: _dashboardKey,
+            ),
+          ]
+        ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    _panelHeightOpen = MediaQuery.of(context).size.height * 0.65;
+
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
         leading: TextButton(
           onLongPress: _toggleEasterEgg,
           onPressed: noop,
-          child: const Text('EGG'),
+          child: const Text(
+            'EGG',
+            style: TextStyle(
+              color: Colors.transparent,
+            ),
+          ),
         ),
         title: Text(widget.title),
+        flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
       ),
       drawer: const Drawer(
         elevation: 16,
         child: Profile(),
       ),
-      body: Center(
-        child: Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: MapWidgetAMap(
-                    key: _mapKey,
-                    getLocation: _getLocation,
-                    toggleMusic: _toggleMusic
+      body: SlidingUpPanel(
+        maxHeight: _panelHeightOpen,
+        minHeight: _panelHeightClosed,
+        parallaxEnabled: true,
+        parallaxOffset: 0.5,
+        boxShadow: [
+          const BoxShadow(
+            color: Colors.black12,
+            offset: Offset(0, 2),
+            blurRadius: 6,
+            spreadRadius: 1,
+          ),
+        ],
+        margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+        body: Center(
+          child: Stack(
+            alignment: AlignmentDirectional.bottomCenter,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: MapWidgetAMap(
+                        key: _mapKey,
+                        getLocation: _getLocation,
+                        toggleMusic: _toggleMusic
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                const Spacer(
-                  flex: 1,
-                ),
-                Consumer<RunningModel>(
-                  builder: (context, RunningModel model, child) =>
-                    MainButton(
+                ],
+              ),
+              Consumer<RunningModel>(
+                builder: (context, RunningModel model, child) =>
+                  Positioned(
+                    bottom: UIConsts.SLIDING_PANEL_INITIAL_HEIGHT + 10,
+                    child: MainButton(
                       key: _mainButtonKey,
                       onStart: () { start(model); },
                       onStop: () { stop(model); },
                       speak: speak,
                     ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Dashboard(
-                  key: _dashboardKey,
-                ),
-              ],
-            ),
+                  ),
+              ),
 
-            Visibility(
-              visible: _easterEggEnabled,
-              child: Positioned(
-                left: 0,
-                top: 0,
-                child: DebugPanel(
-                  key: _debugPanelKey,
-                  enableRandomOffset: MapLocationLocation.enableRandomOffset,
-                  enableDrawPoints: enableDrawPoints,
-                  reset: reset,
-                  clearLocalData: clearLocalData,
-                ),
+              Visibility(
+                  visible: _easterEggEnabled,
+                  child: Positioned(
+                    left: 0,
+                    top: 0,
+                    child: DebugPanel(
+                      key: _debugPanelKey,
+                      enableRandomOffset: MapLocationLocation.enableRandomOffset,
+                      enableDrawPoints: enableDrawPoints,
+                      reset: reset,
+                      clearLocalData: clearLocalData,
+                    ),
+                  )
               )
-            )
-          ],
+            ],
+          ),
         ),
+        panelBuilder: (sc) => _panel(sc),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(8.0),
+          topRight: Radius.circular(8.0),
+        ),
+        onPanelSlide: (double pos) => setState(() {
+          _fabHeight = pos * (_panelHeightOpen - _panelHeightClosed) + _initFabHeight;
+        }),
       ),
     );
   }

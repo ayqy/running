@@ -1,4 +1,4 @@
-
+import 'log.dart';
 
 class Formatter {
   /// m 转 km
@@ -28,16 +28,23 @@ class Formatter {
   }
 
   /// m/s 转 min/km（默认），或者km/（kmph=true）
-  static String formatSpeed(mps, [bool kmph = false]) {
+  static String formatSpeed(double mps, [bool kmph = false]) {
+    if (mps.isNaN) {
+      return "0'00\"";
+    }
     if (kmph) {
       return (mps * 3.6).toStringAsFixed(1);
     }
 
     double mpm = mps * 60;
     double min = 1000 / mpm;
+    // 速度太慢，返回>60，避免超长
+    if (min > 60) {
+      return ">60'";
+    }
     String m = min.truncate().toString();
     String s = (min * 60 % 60).round().toString().padLeft(2, '0');
-    return "$m'$s";
+    return "$m'$s\"";
   }
 
   /// kcal

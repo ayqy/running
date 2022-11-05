@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
 class MyDialog {
-  static void confirm(BuildContext context, String content, Function confirmCallback) {
+  static void confirm(BuildContext context, var content, Function confirmCallback, {String? title}) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("提示", style: TextStyle(color: Colors.orange)),
-          content: Text(content),
+          title: Text(title ?? "提示", style: const TextStyle(color: Colors.orange)),
+          content: content is String ? Text(content) : content,
           actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("取消"),
+            ),
             TextButton(
               onPressed: () {
                 confirmCallback();
                 Navigator.of(context).pop();
               },
               child: const Text("确认"),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text("取消"),
             ),
           ],
         );

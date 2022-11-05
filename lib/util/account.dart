@@ -3,6 +3,7 @@ import 'dart:convert';
 import '../api/account.dart';
 import '../const/storage_key.dart';
 import 'storage.dart';
+import 'log.dart';
 
 String? _uid;
 String? _token;
@@ -28,17 +29,41 @@ class AccountUtil {
       _username = await Storage.get(usernameKey);
       return;
     }
+    // 先加载本地缓存nickname、username等信息
+    try {
+      String userInfoString = await Storage.get(userInfoKey);
+      _userInfo = jsonDecode(userInfoString);
+    } catch(error) {
+      log(error);
+    }
+    // 再从服务拉取最新的用户信息
+    AccountUtil.fetch();
+  }
+
+  static fetch() async {
     var result = await AccountAPI.auth();
     if (result == false) {
       // 登录状态失效，删除本地token
       await AccountUtil.removeToken();
     }
     else {
-      _userInfo = result;
       // 登录了从服务返回取
-      _username = _userInfo?['username'];
-      Storage.set(usernameKey, _username);
+      cache(result);
     }
+  }
+
+  static cache(loginRes) {
+    _userInfo = loginRes;
+    _username = _userInfo?['username'];
+    // 以下两个字段，登录接口有返回，校验接口不返回
+    if (_userInfo?['uid'] != null) {
+      _uid = _userInfo?['uid'];
+    }
+    if (_userInfo?['token'] != null) {
+      _token = _userInfo?['token'];
+    }
+    Storage.set(usernameKey, _username);
+    Storage.set(userInfoKey, jsonEncode(_userInfo));
   }
 
   static removeToken() {
@@ -63,6 +88,10 @@ class AccountUtil {
 
   static getNickname() {
     return _userInfo?['nickname'] ?? '';
+  }
+
+  static getAvatarUrl() {
+    return _userInfo?['avatarUrl'] ?? '';
   }
 
   static getUsername([maybeLogout = false]) {

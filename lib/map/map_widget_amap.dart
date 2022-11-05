@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:amap_flutter_map/amap_flutter_map.dart';
 import 'package:provider/provider.dart';
+import 'package:running/const/ui.dart';
 import '../const/icon.dart';
 import '../model/running_model.dart';
 import '../const/sport_type.dart';
@@ -37,11 +38,14 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
   LatLng? _southwest;
   // 图面元素的外接矩形东北角
   LatLng? _northeast;
+  // 全览区域的padding
+  final double mapOverviewPadding = 50;
   // 地图下边界的bottom
+  final double mapBottomOffset = 160;
   // todo 暂时先写死，应该跟着bounding走
-  double bottomHeight = 160;
+  double bottomHeight = UIConsts.SLIDING_PANEL_INITIAL_HEIGHT + 10;
   // 经验值，修正地图bottomHeight
-  double get mapBottomHeight => bottomHeight * window.devicePixelRatio / 2;
+  double get mapBottomHeight => mapBottomOffset * window.devicePixelRatio / 2;
   // 是否正在播放音乐
   bool isMusicWidgetActive = false;
   // 旋转动画controller
@@ -77,18 +81,22 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
     }
   }
 
-  void setBounding(LatLng? southwest, LatLng? northeast, [double padding = 0]) {
+  void setBounding(LatLng? southwest, LatLng? northeast) {
     if (southwest != null && northeast != null) {
       // 只偏西南角，让底部多留一些padding
-      southwest = patchMapPadding(southwest, yOffset: -(mapBottomHeight + padding));
+      southwest = patchMapPadding(southwest, yOffset: -(mapBottomHeight + mapOverviewPadding));
       // 调试：画出来看看边界
       // _drawRect(southwest, northeast, Colors.blue);
+      if (southwest.latitude > northeast.latitude) {
+        // 西南角纬度超过了东北角纬度，LatLngBounds会报错崩溃，忽略本次调用
+        return;
+      }
       _mapController?.moveCamera(CameraUpdate.newLatLngBounds(
         LatLngBounds(
           southwest: southwest,
           northeast: northeast,
         ),
-        padding,
+        mapOverviewPadding,
       ));
     }
   }
@@ -167,7 +175,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
         northeast = LatLng(northeast.latitude, longitude);
       }
     }
-    setBounding(southwest, northeast, 20);
+    setBounding(southwest, northeast);
     _southwest = southwest;
     _northeast = northeast;
 
@@ -242,7 +250,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
   }
 
   void _onOverviewWidgetPressed() {
-    setBounding(_southwest, _northeast, 20);
+    setBounding(_southwest, _northeast);
   }
 
   void _onMusicWidgetPressed() {

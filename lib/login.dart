@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import 'const/ui.dart';
 import 'util/account.dart';
 import 'util/dialog.dart';
 import 'api/account.dart';
@@ -109,7 +110,9 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
         title: const Text("登录"),
+        flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
       ),
       body: Stack(
         children: [

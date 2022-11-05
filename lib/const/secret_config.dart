@@ -16,7 +16,7 @@ class SecretConfig {
     }
   }
 
-  static get(key) {
+  static String get(key) {
     var value = _data[key];
     log("$key=$value");
     if (value == null) {

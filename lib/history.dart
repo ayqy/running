@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'api/record.dart';
+import 'const/ui.dart';
 import 'widget/numeric_text.dart';
 import 'const/sport_type.dart';
 import 'model/running_model.dart';
@@ -40,8 +41,8 @@ class _HistoryState extends State<History> {
   }
 
   void _loadMore(ScrollController controller, int sportType) async {
-    Map? startIndex = _recordsMap![sportType]?['startIndex'];
-    bool hasNextPage = startIndex != null;
+    int pageIndex = _recordsMap![sportType]?['nextPageIndex'] ?? 0;
+    bool hasNextPage = pageIndex != -1;
     if (hasNextPage && _isLoadMoreRunning == false && controller.position.extentAfter < 300) {
       setState(() {
         _isLoadMoreRunning = true;
@@ -49,19 +50,19 @@ class _HistoryState extends State<History> {
       try {
         var result = await _getRecords(
           sportType: sportType,
-          startIndex: startIndex,
+          pageIndex: pageIndex,
         );
-        List? records = result['list'];
-        Map? nextStartIndex = result['startIndex'];
+        List? records = result?['records'];
+        int? nextPageIndex = result?['nextPageIndex'];
 
         if (records != null && records.isNotEmpty) {
           setState(() {
             _recordsMap![sportType]!['records']!.addAll(records);
-            _recordsMap![sportType]!['startIndex'] = nextStartIndex;
+            _recordsMap![sportType]!['nextPageIndex'] = nextPageIndex;
           });
         } else {
           setState(() {
-            _recordsMap![sportType]!['startIndex'] = null;
+            _recordsMap![sportType]!['nextPageIndex'] = -1;
           });
         }
       } catch (err) {
@@ -81,14 +82,13 @@ class _HistoryState extends State<History> {
     });
   }
 
-  _getRecords({ required int sportType, Map? startIndex }) async {
+  _getRecords({ required int sportType, int? pageIndex = 0 }) async {
     Map conditions = {
       'sportType': sportType,
     };
     var result = await RecordAPI.query(
       conditions: conditions,
-      pageSize: 20,
-      startIndex: startIndex,
+      pageIndex: pageIndex,
     );
     List records = result['list'];
     // 起终点逆地理转回地址
@@ -114,7 +114,7 @@ class _HistoryState extends State<History> {
       }
     }
     return {
-      'startIndex': result['startIndex'],
+      'nextPageIndex': result['nextPageIndex'],
       'records': records,
     };
   }
@@ -244,7 +244,8 @@ class _HistoryState extends State<History> {
     }
 
     List records = _recordsMap![index]?['records'] ?? [];
-    bool hasNextPage = _recordsMap![index]?['startIndex'] != null;
+    int nextPageIndex = _recordsMap![index]?['nextPageIndex'] ?? 0;
+    bool hasNextPage = nextPageIndex != -1;
     if (records.isEmpty) {
       return _buildEmptyView();
     }
@@ -532,15 +533,29 @@ class _HistoryState extends State<History> {
           length: tabs.length,
           child: Scaffold(
             appBar: AppBar(
+              toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
               title: const Text('历史记录'),
+              flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
               bottom: TabBar(
                 labelColor: Colors.white,
+                indicator: const UnderlineTabIndicator(
+                  borderSide: BorderSide(width: 2.0, color: Colors.white),
+                  insets: EdgeInsets.symmetric(horizontal: 30.0, vertical: 5),
+                ),
+                labelPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 tabs: tabs.map((tab) =>
                   Tab(
-                    text: tab['text'],
-                    icon: Icon(tab['icon']),
-                    iconMargin: const EdgeInsets.all(0),
-                    height: 45,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          tab['icon'],
+                          size: 20,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(tab['text']),
+                      ],
+                    ),
                   )
                 ).toList(),
               ),

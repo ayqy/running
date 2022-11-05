@@ -10,8 +10,6 @@ import '../util/log.dart';
 String _host = SecretConfig.get('API_HOST');
 
 class RecordAPI {
-
-
   /// 在增删改查基础上实现的业务接口
   static syncRecords() {
     Storage.get(localKey).then((String value) async {
@@ -105,16 +103,14 @@ class RecordAPI {
     }
     return result;
   }
-  static query({startIndex, pageSize = 10, Map? conditions}) async {
+  static query({pageIndex = 0, pageSize = 10, Map? conditions}) async {
     String url = "$_host/records/query";
     if (conditions == null) {
       conditions = {};
     }
     Map data = {};
     data.addAll(conditions);
-    if (startIndex != null) {
-      data['startIndex'] = startIndex;
-    }
+    data['pageIndex'] = pageIndex >= 0 ? pageIndex : 0;
     data['pageSize'] = pageSize;
     var result = await NetworkUtil.post(url, data);
     if (result == false) {

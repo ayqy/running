@@ -87,6 +87,19 @@ class RunningModel extends ChangeNotifier {
     return _duration;
   }
 
+  final List<int> _kmDurations = [];
+  void recordKMDurations(value) {
+    _kmDurations.add(value);
+    notifyListeners();
+  }
+  void clearKMDurations() {
+    _kmDurations.clear();
+    notifyListeners();
+  }
+  List<int> getKMDurations() {
+    return _kmDurations;
+  }
+
   Map toMap() {
     return {
       'sportType': sportType['value'],
@@ -96,6 +109,7 @@ class RunningModel extends ChangeNotifier {
       'endPosition': getEndPosition(),
       'distance': getDistance(),
       'duration': getDuration(),
+      'kmDurations': getKMDurations(),
     };
   }
 
@@ -127,5 +141,6 @@ class RunningModel extends ChangeNotifier {
     setEndPosition(null);
     setDistance(0.0);
     setDuration(0);
+    clearKMDurations();
   }
 }
