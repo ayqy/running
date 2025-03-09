@@ -10,7 +10,7 @@ class MapConfigAMap {
   ///使用[AMapWidget]的`apiKey`属性配置后Native配置的key将失效，请根据实际情况选择使用
   static AMapApiKey getAPIKeys() {
     return AMapApiKey(
-      androidKey: '',
+      androidKey: SecretConfig.get('AMAP_API_KEY_ANDROID'),
       iosKey: SecretConfig.get('AMAP_API_KEY_IOS'),
     );
   }

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:running/util/account.dart';
+import 'package:running/util/device.dart';
+import 'package:running/util/dialog.dart';
 
 import 'const/ui.dart';
+import 'util/after.dart';
 
 
 class About extends StatefulWidget {
@@ -16,6 +21,7 @@ class About extends StatefulWidget {
 
 class _AboutState extends State<About> {
   PackageInfo? packageInfo;
+  bool showHiddenInfo = false;
 
   @override
   initState() {
@@ -23,6 +29,19 @@ class _AboutState extends State<About> {
     PackageInfo.fromPlatform().then((PackageInfo info) {
       setState(() {
         packageInfo = info;
+      });
+    });
+  }
+
+  _openHiddenInfo() {
+    setState(() {
+      String content = [
+        "diu=${DeviceUtil.getId()}",
+        "uid=${AccountUtil.getUid()}",
+        "token=${AccountUtil.getToken()}"
+      ].join('\n');
+      MyDialog.alert(context, content, title: '关于', buttonText: '复制', onPressed: () {
+        Clipboard.setData(ClipboardData(text: content));
       });
     });
   }
@@ -72,10 +91,13 @@ class _AboutState extends State<About> {
               alignment: Alignment.center,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
-                child: const Image(
-                  image: AssetImage('images/icon.png'),
-                  width: 60,
-                ),
+                child: IconButton(
+                  icon: const Image(
+                    image: AssetImage('images/icon.png'),
+                    width: 60,
+                  ),
+                  onPressed: after(3, _openHiddenInfo),
+                )
               ),
             ),
             Padding(

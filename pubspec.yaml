@@ -33,7 +33,7 @@ dependencies:
   amap_flutter_map: ^3.0.0      # 高德地图SDK
   permission_handler: ^9.2.0    # 权限申请
   fluttertoast: ^8.0.9          # toast
-  location: ^4.2.0              # 定位
+  location: ^5.0.0              # 定位
   date_format: ^2.0.6           # 时间日期格式化
   flutter_tts: ^3.4.0           # TTS语音播报
   audio_service: ^0.18.4        # 后台播放音乐
@@ -50,10 +50,8 @@ dependencies:
   flutter_easyloading: ^3.0.5
   dio: ^4.0.6
   fluwx: ^3.9.0+2
-  device_info_plus: ^4.0.1
   connectivity_plus: ^2.3.6
   email_validator: ^2.0.1
-  package_info_plus: ^1.4.3
   xxtea: ^2.1.0
   image_picker: ^0.8.5+3
   circular_profile_avatar: ^2.0.5
@@ -61,6 +59,8 @@ dependencies:
     git:
       url: https://github.com/qixotic/sliding_up_panel
       ref: v2.0.0+1-Pull303
+  device_info_plus: 3.2.4
+  package_info_plus: ^1.4.2
 
 dev_dependencies:
   flutter_test:

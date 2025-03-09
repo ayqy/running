@@ -38,6 +38,7 @@ import 'util/tts/nonsenses.dart';
 import 'util/audio.dart';
 import 'util/account.dart';
 import 'util/log.dart';
+import 'util/noop.dart';
 
 
 Future<void> main() async {
@@ -363,8 +364,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _easterEggEnabled = !_easterEggEnabled;
     });
   }
-
-  void noop() {}
 
   void enableDrawPoints(enabled) {
     _enabelDrawPoints = enabled;

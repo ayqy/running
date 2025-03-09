@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'noop.dart';
+
 class MyDialog {
   static void confirm(BuildContext context, var content, Function confirmCallback, {String? title}) {
     showDialog(
@@ -17,8 +19,9 @@ class MyDialog {
             ),
             TextButton(
               onPressed: () {
-                confirmCallback();
-                Navigator.of(context).pop();
+                confirmCallback(() {
+                  Navigator.of(context).pop();
+                });
               },
               child: const Text("确认"),
             ),
@@ -27,19 +30,20 @@ class MyDialog {
       });
   }
 
-  static void alert(BuildContext context,String content) {
+  static void alert(BuildContext context,String content, { String title = '提示', String buttonText = '我知道了', Function onPressed = noop }) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text("提示", style: TextStyle(color: Colors.orange)),
+          title: Text(title, style: const TextStyle(color: Colors.orange)),
           content: Text(content),
           actions: <Widget>[
             TextButton(
               onPressed: () {
+                onPressed();
                 Navigator.of(context).pop();
               },
-              child: const Text("我知道了"),
+              child: Text(buttonText),
             ),
           ],
         );

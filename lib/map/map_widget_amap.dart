@@ -12,6 +12,7 @@ import '../util/map.dart';
 import 'map_config_amap.dart';
 import '../util/color.dart';
 import '../widget/radio_group.dart';
+import '../util/account.dart';
 
 class MapWidgetAMap extends StatefulWidget {
   final getLocation;
@@ -50,6 +51,18 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
   bool isMusicWidgetActive = false;
   // 旋转动画controller
   AnimationController? animationController;
+  // 登录后的用户头像
+  String avatar = '';
+
+  @override
+  void initState() {
+    super.initState();
+    AccountUtil.onChange((_) {
+      setState(() {
+        avatar = AccountUtil.getAvatarUrl();
+      });
+    });
+  }
 
   void moveCamera(LatLng? mapCenter) {
     if (mapCenter != null) {
@@ -271,7 +284,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
     };
   }
 
-  Widget _buildWidget(IconData iconData, { void Function()? onPressed, bool circular = false, bool rotating = false }) {
+  Widget _buildWidget(Widget icon, { void Function()? onPressed, bool circular = false, bool rotating = false }) {
     Widget widget = Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
@@ -294,9 +307,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
           child: IconButton(
             padding: const EdgeInsets.all(0),
             onPressed: onPressed,
-            icon: Icon(
-              iconData,
-            ),
+            icon: icon
           ),
         ),
       ),
@@ -345,7 +356,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
           child: Column(
             children: [
               _buildWidget(
-                Icons.person_rounded,
+                avatar != '' ? Image.network(avatar, fit: BoxFit.contain) : const Icon(Icons.person_rounded),
                 onPressed: _onProfileWidgetPressed,
                 circular: true,
               ),
@@ -353,7 +364,9 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
                 height: 10,
               ),
               _buildWidget(
-                isMusicWidgetActive ? Icons.music_note : Icons.music_off,
+                Icon(
+                  isMusicWidgetActive ? Icons.music_note : Icons.music_off
+                ),
                 onPressed: _onMusicWidgetPressed,
                 circular: true,
                 rotating: isMusicWidgetActive,
@@ -370,7 +383,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
               Visibility(
                 visible: canOverview,
                 child: _buildWidget(
-                  MyIcon.route,
+                  const Icon(MyIcon.route),
                   onPressed: _onOverviewWidgetPressed
                 ),
               ),
@@ -380,7 +393,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
                   height: 10,
                 ),
               ),
-              _buildWidget(Icons.my_location, onPressed: _onLocationWidgetPressed),
+              _buildWidget(const Icon(Icons.my_location), onPressed: _onLocationWidgetPressed),
             ],
           ),
         ),

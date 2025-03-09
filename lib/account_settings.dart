@@ -13,6 +13,7 @@ import 'api/account.dart';
 import 'util/log.dart';
 import 'util/dialog.dart';
 import 'util/toast.dart';
+import 'const/icon.dart';
 
 
 typedef OnPickImageCallback = void Function(double? maxWidth, double? maxHeight, int? quality);
@@ -27,10 +28,12 @@ class AccountSettings extends StatefulWidget {
 }
 
 class _AccountSettingsState extends State<AccountSettings> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool isLoggedIn = AccountUtil.isLoggedIn();
   final ImagePicker _picker = ImagePicker();
   XFile? _imageFile;
   dynamic _pickImageError;
+  String _nickname = '';
 
   _onLogoutPressed() async {
     await AccountAPI.logout();
@@ -58,7 +61,7 @@ class _AccountSettingsState extends State<AccountSettings> {
       });
       if (_imageFile != null) {
         if (!mounted) return;
-        MyDialog.confirm(context, _previewImages(), () async {
+        MyDialog.confirm(context, _previewImages(), (close) async {
           EasyLoading.showProgress(0, status: '头像制作中...');
           // 调用两次，暂时绕过bug https://github.com/nslogx/flutter_easyloading/issues/185
           await Future.delayed(const Duration(milliseconds: 50));
@@ -74,10 +77,12 @@ class _AccountSettingsState extends State<AccountSettings> {
               EasyLoading.showSuccess('头像上传成功');
               // 刷一把，重新获取头像
               setState(() {});
+              close();
               return;
             }
           }
           EasyLoading.showError('头像上传失败了，再试试吧');
+          close();
         }, title: '上传头像');
       }
     } catch (e) {
@@ -85,6 +90,32 @@ class _AccountSettingsState extends State<AccountSettings> {
         _pickImageError = e;
       });
     }
+  }
+
+  _updateNickname() {
+    MyDialog.confirm(context, _buildNicknameForm(), (close) async {
+      bool valid = _formKey.currentState?.validate() ?? false;
+      if (!valid) {
+        return;
+      }
+      _formKey.currentState?.save();
+      EasyLoading.showProgress(0);
+      // 调用两次，暂时绕过bug https://github.com/nslogx/flutter_easyloading/issues/18
+      await Future.delayed(const Duration(milliseconds: 50));
+      EasyLoading.showProgress(0.1);
+      var updateResult = await AccountAPI.update({ 'nickname': _nickname });
+      if (updateResult != false) {
+        EasyLoading.showProgress(0.9);
+        await AccountUtil.fetch();
+        EasyLoading.showSuccess('修改成功');
+        // 刷一把，重新获取昵称
+        setState(() {});
+        close();
+        return;
+      }
+      EasyLoading.showError('昵称修改失败了，再试试吧');
+      close();
+    }, title: '修改昵称');
   }
 
   Widget _previewImages() {
@@ -108,6 +139,34 @@ class _AccountSettingsState extends State<AccountSettings> {
         textAlign: TextAlign.center,
       );
     }
+  }
+
+  Widget _buildNicknameForm() {
+    return Form(
+      key: _formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextFormField(
+            keyboardType: TextInputType.text,
+            decoration: const InputDecoration(
+              hintText: '想个新昵称',
+              icon: Icon(MyIcon.feather, size: 20),
+            ),
+            onSaved: (value) {
+              _nickname = value ?? '';
+            },
+            validator: (value) {
+              if (value?.isEmpty ?? false) {
+                return '昵称不能为空';
+              }
+              return null;
+            },
+          ),
+        ],
+      )
+    );
   }
 
   Widget _buildSectionTitle(String title) {
@@ -147,7 +206,6 @@ class _AccountSettingsState extends State<AccountSettings> {
                 if (item['onTap'] != null) {
                   item['onTap']();
                 }
-                log('click');
               },
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
@@ -203,6 +261,7 @@ class _AccountSettingsState extends State<AccountSettings> {
             }, {
               'key': '昵称',
               'value': nickname,
+              'onTap': _updateNickname,
             }]),
             _buildSectionTitle('账号设置'),
             _buildCard([{

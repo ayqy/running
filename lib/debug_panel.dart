@@ -67,8 +67,9 @@ class DebugPanelWidgetState extends State<DebugPanel> {
   }
 
   _onClearLocalData() {
-    MyDialog.confirm(context, '确认清空所有数据吗？', () {
+    MyDialog.confirm(context, '确认清空所有数据吗？', (close) {
       widget.clearLocalData!();
+      close();
     });
   }
 

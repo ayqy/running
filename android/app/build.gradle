@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion localProperties.getProperty('flutter.compileSdkVersion').toInteger()
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -47,17 +47,45 @@ android {
         applicationId "net.ayqy.running"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
-    buildTypes {
+    signingConfigs {
+        debug {
+            keyAlias store_key_alias
+            keyPassword store_key_password
+            storeFile file(store_file)
+            storePassword store_password
+        }
         release {
+            keyAlias store_key_alias
+            keyPassword store_key_password
+            storeFile file(store_file)
+            storePassword store_password
+        }
+    }
+
+    buildTypes {
+        debug {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+
+            //关闭混淆, 否则在运行release包后可能出现运行崩溃， TODO后续进行混淆配置
+            minifyEnabled false //删除无用代码
+            shrinkResources false //删除无用资源
+        }
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+
+            //关闭混淆, 否则在运行release包后可能出现运行崩溃， TODO后续进行混淆配置
+            minifyEnabled false //删除无用代码
+            shrinkResources false //删除无用资源
         }
     }
 }
@@ -68,4 +96,6 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    implementation "com.amap.api:location:5.6.0"
+    implementation "com.amap.api:3dmap:latest.integration"
 }

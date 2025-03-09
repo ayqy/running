@@ -6,6 +6,7 @@ class MyIcon {
 
   static const IconData eye = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData eye_off = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData feather = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData share = IconData(0xe841, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData route = IconData(0xf4d7, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

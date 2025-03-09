@@ -11,6 +11,8 @@ Map? _userInfo;
 // 这个留作记住账号用，不清空
 String? _username;
 class AccountUtil {
+  static final List<Function> _listeners = [];
+
   static init() async {
     Map authInfo = await Storage.get(authKey).then((String value) {
       if (value.isNotEmpty) {
@@ -36,8 +38,26 @@ class AccountUtil {
     } catch(error) {
       log(error);
     }
+    // 回调初始账号信息
+    _fireChangeListeners();
     // 再从服务拉取最新的用户信息
     AccountUtil.fetch();
+  }
+
+  static _fireChangeListeners() {
+    for (var listener in _listeners) {
+      listener(_userInfo);
+    }
+  }
+
+  static onChange(Function callback) {
+    _listeners.add(callback);
+  }
+
+  static offChange(Function callback) {
+    if (_listeners.contains(callback)) {
+      _listeners.remove(callback);
+    }
   }
 
   static fetch() async {
@@ -64,14 +84,18 @@ class AccountUtil {
     }
     Storage.set(usernameKey, _username);
     Storage.set(userInfoKey, jsonEncode(_userInfo));
+    // 回调更新的账号信息
+    _fireChangeListeners();
   }
 
-  static removeToken() {
-    return Storage.remove(authKey).then((_) {
+  static removeToken() async {
+    await Storage.remove(authKey).then((_) {
       _uid = null;
       _token = null;
       _userInfo = null;
     });
+    // 回调退登的账号信息
+    _fireChangeListeners();
   }
 
   static bool isLoggedIn() {

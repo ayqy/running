@@ -36,7 +36,7 @@ class _ProfileState extends State<Profile> {
         var result = await RecordAPI.own(checkOnly: true);
         if (result == true) {
           if (!mounted) return;
-          MyDialog.confirm(context, '是否将历史记录同步至当前账号？', () async {
+          MyDialog.confirm(context, '是否将历史记录同步至当前账号？', (close) async {
             var result = await RecordAPI.own();
             if (result != false) {
               toast('同步成功');
@@ -44,6 +44,7 @@ class _ProfileState extends State<Profile> {
             else {
               toast('同步失败，请检查网络');
             }
+            close();
           });
         }
       }
