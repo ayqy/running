@@ -12,6 +12,7 @@ PODS:
     - AMapFoundation (~> 1.6.9)
   - audio_service (0.0.1):
     - Flutter
+    - FlutterMacOS
   - audio_session (0.0.1):
     - Flutter
   - connectivity_plus (0.0.1):
@@ -39,6 +40,7 @@ PODS:
     - Flutter
   - just_audio (0.0.1):
     - Flutter
+    - FlutterMacOS
   - location (0.0.1):
     - Flutter
   - "OpenWeChatSDK (1.9.2+1)"
@@ -59,7 +61,7 @@ PODS:
 DEPENDENCIES:
   - amap_flutter_location (from `.symlinks/plugins/amap_flutter_location/ios`)
   - amap_flutter_map (from `.symlinks/plugins/amap_flutter_map/ios`)
-  - audio_service (from `.symlinks/plugins/audio_service/ios`)
+  - audio_service (from `.symlinks/plugins/audio_service/darwin`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
@@ -70,7 +72,7 @@ DEPENDENCIES:
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - fluwx (from `.symlinks/plugins/fluwx/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
-  - just_audio (from `.symlinks/plugins/just_audio/ios`)
+  - just_audio (from `.symlinks/plugins/just_audio/darwin`)
   - location (from `.symlinks/plugins/location/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
@@ -94,7 +96,7 @@ EXTERNAL SOURCES:
   amap_flutter_map:
     :path: ".symlinks/plugins/amap_flutter_map/ios"
   audio_service:
-    :path: ".symlinks/plugins/audio_service/ios"
+    :path: ".symlinks/plugins/audio_service/darwin"
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
   connectivity_plus:
@@ -116,7 +118,7 @@ EXTERNAL SOURCES:
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   just_audio:
-    :path: ".symlinks/plugins/just_audio/ios"
+    :path: ".symlinks/plugins/just_audio/darwin"
   location:
     :path: ".symlinks/plugins/location/ios"
   package_info_plus:
@@ -132,33 +134,33 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AMap3DMap: 0de590972bfbe2852fe63109bc11b485d7d848fa
-  amap_flutter_location: 44ff5beb64f42e0bf5feb402fe299dac0013af6f
-  amap_flutter_map: 979e54d227cedac6c7504a2151bfbf3bcf96760a
+  amap_flutter_location: f033c983c2d4319203ff7b523775579534d0d557
+  amap_flutter_map: 6cde084007a3ed06235383d46bc73c6c9a80c1e6
   AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
   AMapLocation: 5ef44a1117be7dc541cb7a7d43d03c5ee91e4387
-  audio_service: f509d65da41b9521a61f1c404dd58651f265a567
-  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
-  connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
-  device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  flutter_mute: 97ee77efe66098c5b5c4fcc740e78dd944c8f5e0
-  flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
-  flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
-  fluttertoast: 16fbe6039d06a763f3533670197d01fc73459037
-  fluwx: 79c66b6d795ab8208262ada215d9e60388cfe492
+  audio_service: aa99a6ba2ae7565996015322b0bb024e1d25c6fd
+  audio_session: 9bb7f6c970f21241b19f5a3658097ae459681ba0
+  connectivity_plus: 8443422d4c5a53dee0d50779ec5dbcda1071251e
+  device_info_plus: d668d0dcad87727e865495c472b911b15d7ee26a
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_mute: 26eba7335f7fc025e15ca94c57f5acd769bd2420
+  flutter_secure_storage: 50035aef357c5a8bdd67fd6bc81370d46efc4d16
+  flutter_tts: b88dbc8655d3dc961bc4a796e4e16a4cc1795833
+  fluttertoast: 61c4d04b244937570e728fcd5f541ddc8b58d01c
+  fluwx: 57b294de07eb122b0fc4ae72060a55346d663818
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
-  just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
-  location: 3a2eed4dd2fab25e7b7baf2a9efefe82b512d740
+  image_picker_ios: 05df248afc810dcc125e2174c441a9a379ec65c2
+  just_audio: 4e391f57b79cad2b0674030a00453ca5ce817eed
+  location: 270786085f436c3740dcfa807d11b8b5a70f4425
   OpenWeChatSDK: 67375e7d4154c22f7ba6b1c334b121473e7d515c
-  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
-  path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
-  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
+  package_info_plus: ae4a63389b62b5be8544b36bfc5b069617938813
+  path_provider_ios: 025d0bdaa9f9ab016700ac1e07ff63415cf638e9
+  permission_handler_apple: 08f8206adee3b28ea33966c224b7228eabaaf6a9
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
-  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  sqflite: 954affaf2567c73cda074440299a625e3b2cbf8a
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  volume_controller: 531ddf792994285c9b17f9d8a7e4dcdd29b3eae9
+  volume_controller: ca1cde542ee70fad77d388f82e9616488110942b
 
 PODFILE CHECKSUM: 7c51a14664d626c31e3977794ecb0da0e574a6ba
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.16.2

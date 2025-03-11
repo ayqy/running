@@ -275,7 +275,8 @@ class _AccountSettingsState extends State<AccountSettings> {
             ElevatedButton(
               onPressed: _onLogoutPressed,
               style: ElevatedButton.styleFrom(
-                primary: const Color(0xfffdfdfd),
+                // primary: const Color(0xfffdfdfd),
+                backgroundColor: const Color(0xfffdfdfd),
                 shadowColor: const Color(0x33e0e0e0),
                 minimumSize: const Size.fromHeight(45),
               ),
