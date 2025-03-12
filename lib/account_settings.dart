@@ -150,6 +150,7 @@ class _AccountSettingsState extends State<AccountSettings> {
         children: [
           TextFormField(
             keyboardType: TextInputType.text,
+            initialValue: AccountUtil.getNickname(),
             decoration: const InputDecoration(
               hintText: '想个新昵称',
               icon: Icon(MyIcon.feather, size: 20),
