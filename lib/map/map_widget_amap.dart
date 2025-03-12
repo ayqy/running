@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:amap_flutter_map/amap_flutter_map.dart';
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:provider/provider.dart';
 import 'package:running/const/ui.dart';
 import '../const/icon.dart';
@@ -356,7 +357,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
           child: Column(
             children: [
               _buildWidget(
-                avatar != '' ? Image.network(avatar, fit: BoxFit.contain) : const Icon(Icons.person_rounded),
+                avatar != '' ? CircularProfileAvatar(avatar) : const Icon(Icons.person_rounded),
                 onPressed: _onProfileWidgetPressed,
                 circular: true,
               ),
