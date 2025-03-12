@@ -120,12 +120,12 @@ class _ProfileState extends State<Profile> {
         padding: EdgeInsets.zero,
         children: [
           Container(
-            decoration: BoxDecoration(
-              color: const Color(0xfff5f5f5),
-              image: isLoggedIn ? const DecorationImage(
+            decoration: const BoxDecoration(
+              color: Color(0xfff5f5f5),
+              image: DecorationImage(
                 image: AssetImage('images/orange-sky.png'),
                 fit: BoxFit.fill,
-              ) : null,
+              ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,8 +186,9 @@ class _ProfileState extends State<Profile> {
                       color: Colors.white,
                     ),
                   ) : ElevatedButton(
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all<Size>(const Size.fromHeight(40)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange, // 明确设置橙色
+                      minimumSize: const Size.fromHeight(40),
                     ),
                     onPressed: _onLoginPressed,
                     child: const Text(

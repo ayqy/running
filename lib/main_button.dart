@@ -134,6 +134,7 @@ class MainButtonWidgetState extends State<MainButton> {
           child: content != null ? FloatingActionButton(
             backgroundColor: isIdle ? Colors.orange : Colors.red,
             onPressed: () { _onPressed(model); },
+            shape: const CircleBorder(),
             child: content,
           ) : null, // This trailing comma makes auto-formatting nicer for build methods.
         );

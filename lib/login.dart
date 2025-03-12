@@ -252,6 +252,7 @@ class _LoginState extends State<Login> {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange, // 添加橙色背景
                           minimumSize: const Size(double.infinity, 48),
                         ),
                         onPressed: formType == FormType.login ? _onLoginPressed : _onSignupPressed,
