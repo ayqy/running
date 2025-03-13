@@ -27,6 +27,11 @@ class _SettingsState extends State<Settings> {
       setState(() {
         selectedMusic = value;
       });
+      MusicConfig.setSelectedMusic(value);
+      // 更新正在播放的音乐
+      if (AudioUtil.audioHandler is AudioPlayerHandler) {
+        (AudioUtil.audioHandler as AudioPlayerHandler).updateMusic(value);
+      }
     });
   }
 
@@ -101,6 +106,10 @@ class _SettingsState extends State<Settings> {
                   selectedMusic = entry.key + 1;
                 });
                 await MusicConfig.setSelectedMusic(entry.key + 1);
+                // 更新正在播放的音乐
+                if (AudioUtil.audioHandler is AudioPlayerHandler) {
+                  (AudioUtil.audioHandler as AudioPlayerHandler).updateMusic(entry.key + 1);
+                }
               }
             }).toList()),
             _buildSectionTitle('播报'),

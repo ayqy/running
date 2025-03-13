@@ -8,6 +8,8 @@ import 'storage.dart';
 class AudioUtil {
   static AudioHandler? _audioHandler;
 
+  static AudioHandler? get audioHandler => _audioHandler;
+
   static Future<AudioHandler> init() async {
     _audioHandler = await AudioService.init(
       builder: () => AudioPlayerHandler(),
@@ -34,7 +36,7 @@ class AudioUtil {
 }
 
 class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
-  static MediaItem _item = MusicConfig.getMusic(0);
+  static late MediaItem _item;
 
   final _player = AudioPlayer();
 
@@ -55,6 +57,14 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
       // loop
       _player.setLoopMode(LoopMode.all);
     });
+  }
+
+  /// Update current playing music
+  Future<void> updateMusic(int selectedIndex) async {
+    _item = MusicConfig.getMusic(selectedIndex);
+    mediaItem.add(_item);
+    await _player.setAudioSource(AudioSource.uri(Uri.parse(_item.id)));
+    await _player.setLoopMode(LoopMode.all);
   }
 
   // In this simple example, we handle only 4 actions: play, pause, seek and
