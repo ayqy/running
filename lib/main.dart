@@ -443,6 +443,10 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: TextButton(
           onLongPress: _toggleEasterEgg,
           onPressed: noop,
+          style: TextButton.styleFrom(
+            splashFactory: NoSplash.splashFactory,
+            foregroundColor: Colors.transparent,
+          ),
           child: const Text(
             'EGG',
             style: TextStyle(
@@ -450,7 +454,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-        title: Text(widget.title),
         flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
       ),
       drawer: const Drawer(
