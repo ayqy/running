@@ -1,6 +1,9 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:just_audio/just_audio.dart';
 
+import '../const/music_config.dart';
+import '../const/storage_key.dart';
+import 'storage.dart';
 
 class AudioUtil {
   static AudioHandler? _audioHandler;
@@ -31,40 +34,27 @@ class AudioUtil {
 }
 
 class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
-  // static final _item = MediaItem(
-  //   id: 'http://cdn.ayqy.net/music%2F%E8%8A%B1%E3%81%9F%E3%82%93%20-%20%E5%8D%83%E6%9C%AC%E6%A1%9C.mp3',
-  //   album: "百狐千樂",
-  //   title: "千本桜",
-  //   artist: "花たん",
-  //   duration: const Duration(milliseconds: 243000),
-  //   artUri: Uri.parse('http://cdn.ayqy.net/music/%E5%8D%83%E6%9C%AC%E6%A1%9C.jpg'),
-  // );
-
-  static final _item = MediaItem(
-    id: 'https://node.ayqy.net/music/slow.mp3',
-    // id: 'https://node.ayqy.net/music/quick.mp3',
-    album: "舒缓音乐",
-    title: "舒缓音乐",
-    artist: "Artist",
-    duration: const Duration(milliseconds: 265000),
-    artUri: Uri.parse('https://node.ayqy.net/music/music.png'),
-  );
+  static MediaItem _item = MusicConfig.getMusic(0);
 
   final _player = AudioPlayer();
 
   /// Initialise our audio handler.
   AudioPlayerHandler() {
-    // So that our clients (the Flutter UI and the system notification) know
-    // what state to display, here we set up our audio handler to broadcast all
-    // playback state changes as they happen via playbackState...
-    _player.playbackEventStream.map(_transformEvent).pipe(playbackState);
-    // ... and also the current media item via mediaItem.
-    mediaItem.add(_item);
+    // Get selected music index from storage
+    MusicConfig.getSelectedMusic().then((selectedIndex) {
+      _item = MusicConfig.getMusic(selectedIndex);
+      // So that our clients (the Flutter UI and the system notification) know
+      // what state to display, here we set up our audio handler to broadcast all
+      // playback state changes as they happen via playbackState...
+      _player.playbackEventStream.map(_transformEvent).pipe(playbackState);
+      // ... and also the current media item via mediaItem.
+      mediaItem.add(_item);
 
-    // Load the player.
-    _player.setAudioSource(AudioSource.uri(Uri.parse(_item.id)));
-    // loop
-    _player.setLoopMode(LoopMode.all);
+      // Load the player.
+      _player.setAudioSource(AudioSource.uri(Uri.parse(_item.id)));
+      // loop
+      _player.setLoopMode(LoopMode.all);
+    });
   }
 
   // In this simple example, we handle only 4 actions: play, pause, seek and

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'const/ui.dart';
+import 'const/music_config.dart';
 import 'util/log.dart';
+import 'util/audio.dart';
+import 'util/storage.dart';
 
 
 class Settings extends StatefulWidget {
@@ -15,6 +18,17 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   Map settings = {};
+  int? selectedMusic;
+
+  @override
+  void initState() {
+    super.initState();
+    MusicConfig.getSelectedMusic().then((value) {
+      setState(() {
+        selectedMusic = value;
+      });
+    });
+  }
 
   _onItemPressed(int? value) {
     log('click$value');
@@ -77,27 +91,18 @@ class _SettingsState extends State<Settings> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildSectionTitle('音乐'),
-            _buildCard([{
-              'key': '清新舒缓',
-              'text': '西安爱情故事 - 王筝',
-              'value': 1,
-              'selected': settings['selected_music'] ?? 0,
-              'action': (_) {
+            _buildCard(MusicConfig.musicList.asMap().entries.map((entry) => {
+              'key': entry.value.album,
+              'text': '${entry.value.title} - ${entry.value.artist}',
+              'value': entry.key + 1,
+              'selected': selectedMusic ?? 1,
+              'action': (_) async {
                 setState(() {
-                  settings['selected_music'] = 1;
+                  selectedMusic = entry.key + 1;
                 });
+                await MusicConfig.setSelectedMusic(entry.key + 1);
               }
-            }, {
-              'key': '燃烧战歌',
-              'text': '千本桜 - 花たん',
-              'value': 2,
-              'selected': settings['selected_music'] ?? 0,
-              'action': (_) {
-                setState(() {
-                  settings['selected_music'] = 2;
-                });
-              }
-            }]),
+            }).toList()),
             _buildSectionTitle('播报'),
             _buildCard([{
               'key': '按公里数',
