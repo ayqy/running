@@ -115,7 +115,7 @@ class _AboutState extends State<About> {
               'value': 'nwujiajie@163.com',
             }, {
               'key': '微信公众号',
-              'value': '前端问问',
+              'value': '老哥职说',
             }]),
             const Expanded(child: SizedBox()),
             const Padding(
