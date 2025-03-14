@@ -99,16 +99,16 @@ class _SettingsState extends State<Settings> {
             _buildCard(MusicConfig.musicList.asMap().entries.map((entry) => {
               'key': entry.value.album,
               'text': '${entry.value.title} - ${entry.value.artist}',
-              'value': entry.key + 1,
-              'selected': selectedMusic ?? 1,
+              'value': entry.key,
+              'selected': selectedMusic ?? 0,
               'action': (_) async {
                 setState(() {
-                  selectedMusic = entry.key + 1;
+                  selectedMusic = entry.key;
                 });
-                await MusicConfig.setSelectedMusic(entry.key + 1);
+                await MusicConfig.setSelectedMusic(entry.key);
                 // 更新正在播放的音乐
                 if (AudioUtil.audioHandler is AudioPlayerHandler) {
-                  (AudioUtil.audioHandler as AudioPlayerHandler).updateMusic(entry.key + 1);
+                  (AudioUtil.audioHandler as AudioPlayerHandler).updateMusic(entry.key);
                 }
               }
             }).toList()),

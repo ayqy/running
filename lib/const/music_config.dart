@@ -11,7 +11,7 @@ class MusicConfig {
       return _selectedMusic!;
     }
     String value = await Storage.get(selectedMusicKey);
-    _selectedMusic = value.isNotEmpty ? int.parse(value) : 1;
+    _selectedMusic = value.isNotEmpty ? int.parse(value) : 0;
     return _selectedMusic!;
   }
 
