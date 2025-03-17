@@ -190,11 +190,12 @@ class DashboardWidgetState extends State<Dashboard> {
               flex: 1,
               child: Column(
                 children: [
-                  const Text('平均配速'),
+                  Text('平均配速', style: TextStyle(color: ThemeColors.regularTextColor)),
                   NumericText(
                     text: avgSpeed,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
+                    color: ThemeColors.valueTextColor,
                   ),
                 ],
               )
@@ -203,11 +204,12 @@ class DashboardWidgetState extends State<Dashboard> {
                 flex: 1,
                 child: Column(
                   children: [
-                    const Text('最快配速'),
+                    Text('最快配速', style: TextStyle(color: ThemeColors.regularTextColor)),
                     NumericText(
                       text: Formatter.formatSpeed(maxSpeed),
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      color: ThemeColors.valueTextColor,
                     ),
                   ],
                 )

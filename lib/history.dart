@@ -183,7 +183,7 @@ class _HistoryState extends State<History> {
                     fontWeight: FontWeight.bold,
                     fontSize: 48,
                   ),
-                  Text(isRunning ? '累计跑过(km)' : '累计里程(km)', style: const TextStyle(color: Colors.white)),
+                  Text(isRunning ? '累计跑过(km)' : '累计里程(km)', style: TextStyle(color: ThemeColors.regularTextColor)),
                   const SizedBox(height: 20),
                   Row(
                     children: [
@@ -192,10 +192,10 @@ class _HistoryState extends State<History> {
                           children: [
                             NumericText(
                               text: summary['count'].toString(),
-                              color: Colors.white,
+                              color: ThemeColors.valueTextColor,
                               fontWeight: FontWeight.bold,
                             ),
-                            const Text('次数', style: TextStyle(color: Colors.white)),
+                            Text('次数', style: TextStyle(color: ThemeColors.regularTextColor)),
                           ],
                         ),
                       ),
@@ -204,10 +204,10 @@ class _HistoryState extends State<History> {
                           children: [
                             NumericText(
                               text: formattedDuration,
-                              color: Colors.white,
+                              color: ThemeColors.valueTextColor,
                               fontWeight: FontWeight.bold,
                             ),
-                            const Text('时长(小时)', style: TextStyle(color: Colors.white)),
+                            Text('时长(小时)', style: TextStyle(color: ThemeColors.regularTextColor)),
                           ],
                         ),
                       ),
@@ -216,10 +216,10 @@ class _HistoryState extends State<History> {
                           children: [
                             NumericText(
                               text: formattedKcal,
-                              color: Colors.white,
+                              color: ThemeColors.valueTextColor,
                               fontWeight: FontWeight.bold,
                             ),
-                            const Text('热量(千卡)', style: TextStyle(color: Colors.white)),
+                            Text('热量(kcal)', style: TextStyle(color: ThemeColors.regularTextColor)),
                           ],
                         ),
                       ),
@@ -230,12 +230,9 @@ class _HistoryState extends State<History> {
             ),
             Align(
               alignment: Alignment.topLeft,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Transform.translate(
-                  offset: const Offset(-8, -5),
-                  child: Icon(icon, size: 100, color: ThemeColors.backgroundColor),
-                ),
+              child: Transform.translate(
+                offset: const Offset(-8, -5),
+                child: Icon(icon, size: 100, color: ThemeColors.backgroundColor),
               ),
             ),
           ]
@@ -325,8 +322,7 @@ class _HistoryState extends State<History> {
                 const SizedBox(width: 10),
                 NumericText(
                     text: formatDate(DateTime.fromMillisecondsSinceEpoch(record['startTime']), [yyyy, '-', mm, '-', dd]),
-                    fontSize: 16,
-                    color: ThemeColors.valueTextColor,
+                    fontSize: 16
                 ),
               ],
             ),
@@ -336,8 +332,8 @@ class _HistoryState extends State<History> {
               children: [
                 Column(
                   children: [
-                    Text('起点', style: TextStyle(color: ThemeColors.valueTextColor)),
-                    Text('终点', style: TextStyle(color: ThemeColors.valueTextColor)),
+                    Text('起点', style: TextStyle(color: ThemeColors.regularTextColor)),
+                    Text('终点', style: TextStyle(color: ThemeColors.regularTextColor)),
                   ],
                 ),
                 const SizedBox(width: 6),
@@ -365,12 +361,24 @@ class _HistoryState extends State<History> {
                     ]
                 ),
                 const SizedBox(width: 6),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(record['startAddress'].toString(), style: TextStyle(color: ThemeColors.valueTextColor)),
-                      Text(record['endAddress'].toString(), style: TextStyle(color: ThemeColors.valueTextColor)),
-                    ]
+                Expanded(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          record['startAddress'].toString(),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: TextStyle(color: ThemeColors.valueTextColor),
+                        ),
+                        Text(
+                          record['endAddress'].toString(),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: TextStyle(color: ThemeColors.valueTextColor),
+                        ),
+                      ]
+                  ),
                 ),
               ],
             ),
