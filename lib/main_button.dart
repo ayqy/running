@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:running/const/running_status.dart';
+import 'package:running/const/theme.dart';
 import 'model/running_model.dart';
 
 class MainButton extends StatefulWidget {
@@ -132,7 +133,7 @@ class MainButtonWidgetState extends State<MainButton> {
           width: isIdle ? 90 : 60,
           height: isIdle ? 90 : 60,
           child: content != null ? FloatingActionButton(
-            backgroundColor: isIdle ? Colors.orange : Colors.red,
+            backgroundColor: isIdle ? ThemeColors.primaryColor : Colors.red,
             onPressed: () { _onPressed(model); },
             shape: const CircleBorder(),
             child: content,

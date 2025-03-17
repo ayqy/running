@@ -5,9 +5,11 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:running/util/account.dart';
 import 'package:running/util/device.dart';
 import 'package:running/util/dialog.dart';
+import 'package:running/widget/custom_app_bar.dart';
 
 import 'const/ui.dart';
 import 'util/after.dart';
+import 'const/theme.dart';
 
 
 class About extends StatefulWidget {
@@ -50,7 +52,7 @@ class _AboutState extends State<About> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
-        color: Colors.white,
+        color: ThemeColors.cardColor,
       ),
       child: Column(
         children: pairs.map((pair) {
@@ -58,10 +60,10 @@ class _AboutState extends State<About> {
             padding: const EdgeInsets.all(10),
             child: Row(
               children: [
-                Text(pair['key'] ?? ''),
+                Text(pair['key'] ?? '', style: TextStyle(color: ThemeColors.regularTextColor)),
                 const Expanded(child: SizedBox()),
-                Text(pair['value'] ?? '', style: const TextStyle(color: Colors.grey)),
-                const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
+                Text(pair['value'] ?? '', style: TextStyle(color: ThemeColors.valueTextColor)),
+                Icon(Icons.arrow_forward_ios, size: 16, color: ThemeColors.regularTextColor),
               ],
             ),
           );
@@ -75,14 +77,12 @@ class _AboutState extends State<About> {
     String version = packageInfo != null ? "当前版本：${packageInfo!.version}.${packageInfo!.buildNumber}" : '';
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
-        title: const Text("关于"),
-        flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
+      appBar: CustomAppBar(
+        title: "关于",
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
-        color: const Color(0xfff6f7f7),
+        color: ThemeColors.backgroundColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -104,8 +104,8 @@ class _AboutState extends State<About> {
               padding: const EdgeInsets.all(10),
               child: Text(
                 version,
-                style: const TextStyle(
-                  color: Color(0xff333333),
+                style: TextStyle(
+                  color: ThemeColors.valueTextColor,
                 ),
               ),
             ),
@@ -118,13 +118,13 @@ class _AboutState extends State<About> {
               'value': '老哥职说',
             }]),
             const Expanded(child: SizedBox()),
-            const Padding(
-              padding: EdgeInsets.all(10),
+            Padding(
+              padding: const EdgeInsets.all(10),
               child: Text(
-                  'Copyright©2022 黯羽轻扬. All rights reserved.',
+                  'Copyright©2022 贾杰. All rights reserved.',
                   style: TextStyle(
                     fontSize: 12,
-                    color: Color(0xff999999),
+                    color: ThemeColors.regularTextColor,
                   )
               ),
             ),

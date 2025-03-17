@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:running/widget/custom_app_bar.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,6 +15,7 @@ import 'util/log.dart';
 import 'util/dialog.dart';
 import 'util/toast.dart';
 import 'const/icon.dart';
+import 'const/theme.dart';
 
 
 typedef OnPickImageCallback = void Function(double? maxWidth, double? maxHeight, int? quality);
@@ -155,6 +157,7 @@ class _AccountSettingsState extends State<AccountSettings> {
               hintText: '想个新昵称',
               icon: Icon(MyIcon.feather, size: 20),
             ),
+            style: TextStyle(color: ThemeColors.valueTextColor),
             onSaved: (value) {
               _nickname = value ?? '';
             },
@@ -175,8 +178,8 @@ class _AccountSettingsState extends State<AccountSettings> {
       padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
       child: Text(
         title,
-        style: const TextStyle(
-          color: Colors.grey,
+        style: TextStyle(
+          color: ThemeColors.regularTextColor,
           fontSize: 14,
         ),
       ),
@@ -184,44 +187,42 @@ class _AccountSettingsState extends State<AccountSettings> {
   }
 
   Widget _buildCard(List items) {
-    return Material(
-      child: Ink(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(6),
-        ),
-        child: Column(
-          children: items.map((item) {
-            Widget valuePart;
-            if (item['value'] is Widget) {
-              valuePart = item['value'];
-            }
-            else {
-              valuePart = Text(item['value'] ?? '', style: const TextStyle(color: Colors.grey));
-            }
-            return InkWell(
-              customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
+    return Container(
+      decoration: BoxDecoration(
+        color: ThemeColors.cardColor,
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Column(
+        children: items.map((item) {
+          Widget valuePart;
+          if (item['value'] is Widget) {
+            valuePart = item['value'];
+          }
+          else {
+            valuePart = Text(item['value'] ?? '', style: TextStyle(color: ThemeColors.regularTextColor));
+          }
+          return InkWell(
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6),
+            ),
+            onTap: () {
+              if (item['onTap'] != null) {
+                item['onTap']();
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
+              child: Row(
+                children: [
+                  Text(item['key'] ?? '', style: TextStyle(color: ThemeColors.valueTextColor)),
+                  const Expanded(child: SizedBox()),
+                  valuePart,
+                  Icon(Icons.arrow_forward_ios, size: 16, color: ThemeColors.regularTextColor),
+                ],
               ),
-              onTap: () {
-                if (item['onTap'] != null) {
-                  item['onTap']();
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 15, 10, 15),
-                child: Row(
-                  children: [
-                    Text(item['key'] ?? ''),
-                    const Expanded(child: SizedBox()),
-                    valuePart,
-                    const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
-                  ],
-                ),
-              ),
-            );
-          }).toList(),
-        ),
+            ),
+          );
+        }).toList(),
       ),
     );
   }
@@ -239,14 +240,12 @@ class _AccountSettingsState extends State<AccountSettings> {
     String avatarUrl = AccountUtil.getAvatarUrl();
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
-        title: const Text("账号设置"),
-        flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
+      appBar: CustomAppBar(
+        title: "账号设置",
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
-        color: const Color(0xfff6f7f7),
+        color: ThemeColors.backgroundColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -276,16 +275,16 @@ class _AccountSettingsState extends State<AccountSettings> {
             ElevatedButton(
               onPressed: _onLogoutPressed,
               style: ElevatedButton.styleFrom(
-                // primary: const Color(0xfffdfdfd),
-                backgroundColor: const Color(0xfffdfdfd),
-                shadowColor: const Color(0x33e0e0e0),
+                backgroundColor: ThemeColors.cardColor,
+                shadowColor: ThemeColors.dividerColor,
                 minimumSize: const Size.fromHeight(45),
               ),
-              child: const Text(
+              child: Text(
                 '退出登录',
                 style: TextStyle(
                   fontSize: 16,
-                  color: Color(0x99ff0000),
+                  color: ThemeColors.currentTheme == ThemeType.dark ? 
+                      const Color(0xFFFF5252) : const Color(0x99ff0000),
                 ),
               ),
             ),

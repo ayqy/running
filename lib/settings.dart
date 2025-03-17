@@ -5,6 +5,8 @@ import 'const/music_config.dart';
 import 'util/log.dart';
 import 'util/audio.dart';
 import 'util/storage.dart';
+import 'const/theme.dart';
+import 'widget/custom_app_bar.dart';
 
 
 class Settings extends StatefulWidget {
@@ -44,8 +46,8 @@ class _SettingsState extends State<Settings> {
       padding: const EdgeInsets.all(10),
       child: Text(
         title,
-        style: const TextStyle(
-          color: Colors.grey,
+        style: TextStyle(
+          color: ThemeColors.regularTextColor,
           fontSize: 14,
         ),
       ),
@@ -56,7 +58,7 @@ class _SettingsState extends State<Settings> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
-        color: Colors.white,
+        color: ThemeColors.cardColor,
       ),
       child: Column(
         children: items.map((item) {
@@ -64,14 +66,15 @@ class _SettingsState extends State<Settings> {
             padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             child: Row(
               children: [
-                Text(item['key'] ?? ''),
+                Text(item['key'] ?? '', style: TextStyle(color: ThemeColors.valueTextColor)),
                 const Expanded(child: SizedBox()),
-                Text(item['text'] ?? '', style: const TextStyle(color: Colors.grey)),
+                Text(item['text'] ?? '', style: TextStyle(color: ThemeColors.regularTextColor)),
                 // const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
                 Radio(
                   value: item['value'],
                   groupValue: item['selected'],
                   onChanged: item['action'],
+                  activeColor: ThemeColors.selectedColor,
                 ),
               ],
             ),
@@ -84,14 +87,12 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
-        title: const Text("设置"),
-        flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
+      appBar: CustomAppBar(
+        title: "设置",
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
-        color: const Color(0xfff6f7f7),
+        color: ThemeColors.backgroundColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

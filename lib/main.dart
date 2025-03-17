@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:running/widget/custom_app_bar.dart';
 import 'package:amap_flutter_location/amap_flutter_location.dart';
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:running/const/theme.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:provider/provider.dart';
 import 'package:fluwx/fluwx.dart';
@@ -438,8 +440,8 @@ class _MyHomePageState extends State<MyHomePage> {
     _panelHeightOpen = MediaQuery.of(context).size.height * 0.65;
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
+      appBar: CustomAppBar(
+        title: "",
         leading: TextButton(
           onLongPress: _toggleEasterEgg,
           onPressed: noop,
@@ -454,7 +456,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-        flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
       ),
       drawer: const Drawer(
         elevation: 16,
@@ -474,6 +475,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+        color: ThemeColors.cardColor,
         body: Center(
           child: Stack(
             alignment: AlignmentDirectional.bottomCenter,

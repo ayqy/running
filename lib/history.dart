@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:running/widget/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:running/const/theme.dart';
 
 import 'api/record.dart';
 import 'const/ui.dart';
@@ -101,6 +103,7 @@ class _HistoryState extends State<History> {
           'lon': startPosition['longitude'],
           'lat': startPosition['latitude'],
         });
+        
         positions.add({
           'lon': endPosition['longitude'],
           'lat': endPosition['latitude'],
@@ -123,9 +126,9 @@ class _HistoryState extends State<History> {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Image(image: AssetImage('images/empty.png')),
-          Text('还没有记录哦', style: TextStyle(color: Color(0xFFBFBFBF))),
+        children: [
+          const Image(image: AssetImage('images/empty.png')),
+          Text('还没有记录哦', style: TextStyle(color: ThemeColors.regularTextColor)),
         ],
       ),
     );
@@ -166,9 +169,9 @@ class _HistoryState extends State<History> {
               padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
+                gradient: LinearGradient(
                     stops: [0, 1],
-                    colors: [Color(0xff465882), Color(0xff6c7b9e)]
+                    colors: ThemeColors.navBarGradientColors
                 ),
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -227,9 +230,12 @@ class _HistoryState extends State<History> {
             ),
             Align(
               alignment: Alignment.topLeft,
-              child: Transform.translate(
-                offset: const Offset(-8, -5),
-                child: Icon(icon, size: 100, color: const Color(0xfff6f7f7)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Transform.translate(
+                  offset: const Offset(-8, -5),
+                  child: Icon(icon, size: 100, color: ThemeColors.backgroundColor),
+                ),
               ),
             ),
           ]
@@ -276,10 +282,10 @@ class _HistoryState extends State<History> {
         padding: const EdgeInsets.all(10),
         margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: ThemeColors.cardColor,
             borderRadius: BorderRadius.circular(6),
             border: Border.all(
-              color: const Color.fromRGBO(43, 43, 43, 0.05),
+              color: ThemeColors.dividerColor.withOpacity(0.05),
               style: BorderStyle.solid,
               width: 1,
             )
@@ -319,7 +325,8 @@ class _HistoryState extends State<History> {
                 const SizedBox(width: 10),
                 NumericText(
                     text: formatDate(DateTime.fromMillisecondsSinceEpoch(record['startTime']), [yyyy, '-', mm, '-', dd]),
-                    fontSize: 16
+                    fontSize: 16,
+                    color: ThemeColors.valueTextColor,
                 ),
               ],
             ),
@@ -328,9 +335,9 @@ class _HistoryState extends State<History> {
             Row(
               children: [
                 Column(
-                  children: const [
-                    Text('起点'),
-                    Text('终点'),
+                  children: [
+                    Text('起点', style: TextStyle(color: ThemeColors.valueTextColor)),
+                    Text('终点', style: TextStyle(color: ThemeColors.valueTextColor)),
                   ],
                 ),
                 const SizedBox(width: 6),
@@ -361,13 +368,13 @@ class _HistoryState extends State<History> {
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(record['startAddress'].toString()),
-                      Text(record['endAddress'].toString()),
+                      Text(record['startAddress'].toString(), style: TextStyle(color: ThemeColors.valueTextColor)),
+                      Text(record['endAddress'].toString(), style: TextStyle(color: ThemeColors.valueTextColor)),
                     ]
                 ),
               ],
             ),
-            const Divider(height: 20, thickness: 1, color: Color.fromRGBO(43, 43, 43, 0.1)),
+            Divider(height: 20, thickness: 1, color: ThemeColors.dividerColor.withOpacity(0.1)),
             // 指标
             Row(
               children: [
@@ -378,8 +385,9 @@ class _HistoryState extends State<History> {
                         text: formattedDistance,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        color: ThemeColors.valueTextColor,
                       ),
-                      const Text('距离(km)', style: TextStyle(color: Colors.grey)),
+                      Text('距离(km)', style: TextStyle(color: ThemeColors.regularTextColor)),
                     ],
                   ),
                 ),
@@ -390,8 +398,9 @@ class _HistoryState extends State<History> {
                         text: formattedDuration,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        color: ThemeColors.valueTextColor,
                       ),
-                      const Text('时长', style: TextStyle(color: Colors.grey)),
+                      Text('时长', style: TextStyle(color: ThemeColors.regularTextColor)),
                     ],
                   ),
                 ),
@@ -402,8 +411,9 @@ class _HistoryState extends State<History> {
                         text: formattedSpeed,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        color: ThemeColors.valueTextColor,
                       ),
-                      Text(speedText, style: const TextStyle(color: Colors.grey)),
+                      Text(speedText, style: TextStyle(color: ThemeColors.regularTextColor)),
                     ],
                   ),
                 ),
@@ -414,8 +424,9 @@ class _HistoryState extends State<History> {
                         text: formattedKcal,
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        color: ThemeColors.valueTextColor,
                       ),
-                      const Text('热量(kcal)', style: TextStyle(color: Colors.grey)),
+                      Text('热量(kcal)', style: TextStyle(color: ThemeColors.regularTextColor)),
                     ],
                   ),
                 ),
@@ -455,7 +466,7 @@ class _HistoryState extends State<History> {
 
   Widget _wrapBackgroundContainer(Widget child) {
     return Container(
-      color: const Color(0xfff6f7f7),
+      color: ThemeColors.backgroundColor,
       child: child,
     );
   }
@@ -532,10 +543,8 @@ class _HistoryState extends State<History> {
           initialIndex: initialIndex,
           length: tabs.length,
           child: Scaffold(
-            appBar: AppBar(
-              toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
-              title: const Text('历史记录'),
-              flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
+            appBar: CustomAppBar(
+              title: '历史记录',
               bottom: TabBar(
                 labelColor: Colors.white,
                 indicator: const UnderlineTabIndicator(

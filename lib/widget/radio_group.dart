@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:running/const/theme.dart';
 
 class RadioGroup extends StatefulWidget {
   final List<Map> items;
@@ -31,17 +32,17 @@ class RadioGroupState extends State<RadioGroup> {
             color: Colors.white30,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isSelected ? Colors.orange : Colors.transparent,
+              color: isSelected ? ThemeColors.selectedColor : Colors.transparent,
               width: 1,
               style: BorderStyle.solid,
             ),
           ),
           child: item['icon'] != null ? Icon(
             item['icon'],
-            color: isSelected ? Colors.orange : Colors.black,
+            color: isSelected ? ThemeColors.selectedColor : Colors.black,
           ) : Text(
             item['label'],
-            style: TextStyle(color: isSelected ? Colors.orange : Colors.black),
+            style: TextStyle(color: isSelected ? ThemeColors.selectedColor : Colors.black),
           ),
         ),
       );

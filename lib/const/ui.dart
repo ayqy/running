@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'theme.dart';
 
 class UIConsts {
   static double APPBAR_TOOLBAR_HEIGHT = 36;
+  // 导航栏文字颜色
+  static Color get APPBAR_TEXT_COLOR => ThemeColors.regularTextColor;
+  // 导航栏文字字号
+  static const double APPBAR_TEXT_FONT_SIZE = 14.0;
   static Widget APPBAR_FLEXIBLE_SPACE = Container(
-    decoration: const BoxDecoration(
+    decoration: BoxDecoration(
       gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomCenter,
-          colors: <Color>[Color(0xfffccf31), Color(0xfff55555)]
+          colors: ThemeColors.navBarGradientColors
       ),
     ),
   );

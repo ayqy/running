@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:running/const/theme.dart';
+import 'package:running/widget/custom_app_bar.dart';
 
 import 'const/ui.dart';
 import 'util/account.dart';
@@ -109,21 +111,14 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
-        title: const Text("登录"),
-        flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
+      appBar: CustomAppBar(
+        title: "登录",
       ),
       body: Stack(
         children: [
           Container(
             alignment: Alignment.center,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('images/orange-sky.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
+            color: ThemeColors.backgroundColor,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -147,10 +142,12 @@ class _LoginState extends State<Login> {
                         visible: formType == FormType.signup,
                         child: TextFormField(
                           maxLength: 7,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: '昵称',
-                            icon: Icon(Icons.person, size: 20),
+                            icon: Icon(Icons.person, size: 20, color: ThemeColors.regularTextColor),
+                            hintStyle: TextStyle(color: ThemeColors.regularTextColor),
                           ),
+                          style: TextStyle(color: ThemeColors.valueTextColor),
                           onSaved: (value) {
                             formData['nickname'] = value;
                           },
@@ -168,10 +165,12 @@ class _LoginState extends State<Login> {
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9@_\\-\\.]')),
                         ],
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintText: '手机号或邮箱',
-                          icon: Icon(Icons.phone_android, size: 20),
+                          icon: Icon(Icons.phone_android, size: 20, color: ThemeColors.regularTextColor),
+                          hintStyle: TextStyle(color: ThemeColors.regularTextColor),
                         ),
+                        style: TextStyle(color: ThemeColors.valueTextColor),
                         onSaved: (value) {
                           formData['username'] = value;
                         },
@@ -195,10 +194,12 @@ class _LoginState extends State<Login> {
                             inputFormatters: [
                               FilteringTextInputFormatter.allow(RegExp("^[\u0000-\u007F]+\$")),
                             ],
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               hintText: '密码',
-                              icon: Icon(Icons.lock, size: 20),
+                              icon: Icon(Icons.lock, size: 20, color: ThemeColors.regularTextColor),
+                              hintStyle: TextStyle(color: ThemeColors.regularTextColor),
                             ),
+                            style: TextStyle(color: ThemeColors.valueTextColor),
                             onSaved: (value) {
                               formData['password'] = value;
                             },
@@ -252,7 +253,7 @@ class _LoginState extends State<Login> {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange, // 添加橙色背景
+                          backgroundColor: ThemeColors.selectedColor, // 使用主题配置的颜色
                           minimumSize: const Size(double.infinity, 48),
                         ),
                         onPressed: formType == FormType.login ? _onLoginPressed : _onSignupPressed,

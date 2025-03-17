@@ -12,6 +12,7 @@ import 'widget/numeric_text.dart';
 import 'model/running_model.dart';
 import 'util/formatter.dart';
 import 'util/converter.dart';
+import 'const/theme.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -52,12 +53,12 @@ class DashboardWidgetState extends State<Dashboard> {
         children: [
           NumericText(
             text: value,
-            color: Colors.black,
+            color: ThemeColors.valueTextColor,
           ),
           Text(
             desc,
-            style: const TextStyle(
-              color: Colors.grey,
+            style: TextStyle(
+              color: ThemeColors.regularTextColor,
             ),
           ),
         ],
@@ -114,13 +115,13 @@ class DashboardWidgetState extends State<Dashboard> {
             NumericText(
               text: formattedDistance,
               fontSize: 48,
-              color: Colors.black,
+              color: ThemeColors.valueTextColor,
               fontWeight: FontWeight.bold,
             ),
-            const NumericText(
+            NumericText(
               text: 'km',
               fontSize: 18,
-              color: Colors.black,
+              color: ThemeColors.valueTextColor,
               fontWeight: FontWeight.bold,
             ),
           ],
@@ -215,10 +216,10 @@ class DashboardWidgetState extends State<Dashboard> {
         ),
         const SizedBox(height: 10),
         Row(
-          children: const [
-            Text('公里', style: TextStyle(color: Color(0xff555555))),
-            SizedBox(width: 20),
-            Text('配速(min/km)', style: TextStyle(color: Color(0xff555555))),
+          children: [
+            Text('公里', style: TextStyle(color: ThemeColors.regularTextColor)),
+            const SizedBox(width: 20),
+            Text('配速(min/km)', style: TextStyle(color: ThemeColors.regularTextColor)),
           ],
         ),
         const SizedBox(height: 10),
@@ -238,7 +239,7 @@ class DashboardWidgetState extends State<Dashboard> {
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(BAR_HEIGHT),
-                        color: const Color(0xffeeeeee),
+                        color: ThemeColors.barColor,
                       ),
                       child: Align(
                         alignment: Alignment.centerLeft,
@@ -287,7 +288,7 @@ class DashboardWidgetState extends State<Dashboard> {
                         alignment: Alignment.centerRight,
                         child: Text(
                           "$currentKM公里  累计用时 ${Formatter.formatDuration(timeSpent)}",
-                          style: const TextStyle(color: Colors.grey),
+                          style: TextStyle(color: ThemeColors.regularTextColor),
                         ),
                       ),
                       const SizedBox(height: 8),
