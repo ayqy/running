@@ -77,6 +77,16 @@ class _ProfileState extends State<Profile> {
     }
   }
 
+  _onAchievementsPressed() {
+    if (!AccountUtil.isLoggedIn()) {
+      EasyLoading.showInfo('登录后即可查看');
+    }
+    else {
+      Navigator.of(context).pop();
+      Navigator.pushNamed(context, '/achievements');
+    }
+  }
+
   _onSettingsPressed() {
     Navigator.of(context).pop();
     Navigator.pushNamed(context, '/settings');
@@ -179,6 +189,12 @@ class _ProfileState extends State<Profile> {
             leading: const Icon(Icons.history_rounded),
             title: Text('历史记录', style: TextStyle(color: ThemeColors.valueTextColor)),
             onTap: _onHistoryPressed,
+          ),
+          div,
+          ListTile(
+            leading: const Icon(Icons.emoji_events_rounded),
+            title: Text('运动成就', style: TextStyle(color: ThemeColors.valueTextColor)),
+            onTap: _onAchievementsPressed,
           ),
           div,
           ListTile(

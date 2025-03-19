@@ -93,7 +93,7 @@ class _AboutState extends State<About> {
                 borderRadius: BorderRadius.circular(6),
                 child: IconButton(
                   icon: const Image(
-                    image: AssetImage('images/icon.png'),
+                    image: AssetImage('images/icon.jpeg'),
                     width: 60,
                   ),
                   onPressed: after(3, _openHiddenInfo),

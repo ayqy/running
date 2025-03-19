@@ -41,12 +41,15 @@ import 'util/audio.dart';
 import 'util/account.dart';
 import 'util/log.dart';
 import 'util/noop.dart';
+import 'achievements.dart';
 
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // 加载API Key等特殊配置常量
   await SecretConfig.load();
+  // 初始化主题配置
+  await ThemeColors.getCurrentTheme();
   runApp(
     ChangeNotifierProvider(
       create: (context) => RunningModel(),
@@ -159,6 +162,7 @@ class MyApp extends StatelessWidget {
         '/account_settings': (BuildContext context) => const AccountSettings(),
         '/settings': (BuildContext context) => const Settings(),
         '/about': (BuildContext context) => const About(),
+        '/achievements': (BuildContext context) => const Achievements(),
       },
     );
   }

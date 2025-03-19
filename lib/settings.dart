@@ -7,7 +7,7 @@ import 'util/audio.dart';
 import 'util/storage.dart';
 import 'const/theme.dart';
 import 'widget/custom_app_bar.dart';
-
+import 'util/toast.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key,}) : super(key: key);
@@ -21,6 +21,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   Map settings = {};
   int? selectedMusic;
+  ThemeType? selectedTheme;
 
   @override
   void initState() {
@@ -34,6 +35,11 @@ class _SettingsState extends State<Settings> {
       if (AudioUtil.audioHandler is AudioPlayerHandler) {
         (AudioUtil.audioHandler as AudioPlayerHandler).updateMusic(value);
       }
+    });
+    ThemeColors.getCurrentTheme().then((value) {
+      setState(() {
+        selectedTheme = value;
+      });
     });
   }
 
@@ -69,12 +75,11 @@ class _SettingsState extends State<Settings> {
                 Text(item['key'] ?? '', style: TextStyle(color: ThemeColors.valueTextColor)),
                 const Expanded(child: SizedBox()),
                 Text(item['text'] ?? '', style: TextStyle(color: ThemeColors.regularTextColor)),
-                // const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
                 Radio(
                   value: item['value'],
                   groupValue: item['selected'],
                   onChanged: item['action'],
-                  activeColor: ThemeColors.selectedColor,
+                  activeColor: ThemeColors.selectedColor
                 ),
               ],
             ),
@@ -96,6 +101,32 @@ class _SettingsState extends State<Settings> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            _buildSectionTitle('主题'),
+            _buildCard([{
+              'key': '冷酷黑',
+              'text': '',
+              'value': ThemeType.dark,
+              'selected': selectedTheme ?? ThemeType.dark,
+              'action': (_) async {
+                setState(() {
+                  selectedTheme = ThemeType.dark;
+                });
+                await ThemeColors.setCurrentTheme(ThemeType.dark);
+                toast('切换至冷酷黑，下次启动生效');
+              }
+            }, {
+              'key': '活力橙',
+              'text': '',
+              'value': ThemeType.light,
+              'selected': selectedTheme ?? ThemeType.dark,
+              'action': (_) async {
+                setState(() {
+                  selectedTheme = ThemeType.light;
+                });
+                await ThemeColors.setCurrentTheme(ThemeType.light);
+                toast('切换至活力橙，下次启动生效');
+              }
+            }]),
             _buildSectionTitle('音乐'),
             _buildCard(MusicConfig.musicList.asMap().entries.map((entry) => {
               'key': entry.value.album,

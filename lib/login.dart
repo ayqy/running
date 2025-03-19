@@ -133,7 +133,7 @@ class _LoginState extends State<Login> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(40),
                         child: const Image(
-                          image: AssetImage('images/icon.png'),
+                          image: AssetImage('images/icon.jpeg'),
                           width: 80,
                         ),
                       ),

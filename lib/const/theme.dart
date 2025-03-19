@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../util/storage.dart';
 
 // 主题类型枚举
 enum ThemeType {
@@ -7,8 +8,26 @@ enum ThemeType {
 }
 
 class ThemeColors {
-  // 主题类型
-  static const ThemeType currentTheme = ThemeType.dark;
+  static const selectedThemeKey = 'selected_theme';
+  static ThemeType? _selectedTheme;
+
+
+
+  static Future<ThemeType> getCurrentTheme() async {
+    if (_selectedTheme != null) {
+      return _selectedTheme!;
+    }
+    String value = await Storage.get(selectedThemeKey);
+    _selectedTheme = value.isNotEmpty ? ThemeType.values[int.parse(value)] : ThemeType.dark;
+    return _selectedTheme!;
+  }
+
+  static Future<void> setCurrentTheme(ThemeType theme) async {
+    _selectedTheme = theme;
+    await Storage.set(selectedThemeKey, '${theme.index}');
+  }
+
+  static ThemeType get selectedTheme => _selectedTheme?? ThemeType.dark;
 
   // 获取当前主题的颜色
   static Color get primaryColor => _getThemeColor(_primaryColors);
@@ -22,19 +41,19 @@ class ThemeColors {
   
   // 获取导航栏渐变色
   static List<Color> get navBarGradientColors => 
-      currentTheme == ThemeType.dark ? 
+      _selectedTheme == ThemeType.dark ? 
       [const Color(0xFF2D2D2D), const Color(0xFF1A1A1A)] : 
       [const Color(0xFF64D5A3), const Color(0xFF5CC99F)];
 
   // 获取个人页面头部渐变背景色
   static List<Color> get profileHeaderGradientColors =>
-      currentTheme == ThemeType.dark ?
+      _selectedTheme == ThemeType.dark ?
       [const Color(0xFF1A1A1A), const Color(0xFF2D3A30), const Color(0xFF1E3323)] :
       [const Color(0xFF64D5A3), const Color(0xFF5CC99F)];
 
   // 获取指定主题色值
   static Color _getThemeColor(Map<ThemeType, Color> themeColors) {
-    return themeColors[currentTheme] ?? themeColors[ThemeType.light]!;
+    return themeColors[_selectedTheme ?? ThemeType.dark] ?? themeColors[ThemeType.light]!;
   }
 
   // 各主题下的主色调

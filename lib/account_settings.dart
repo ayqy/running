@@ -283,7 +283,7 @@ class _AccountSettingsState extends State<AccountSettings> {
                 '退出登录',
                 style: TextStyle(
                   fontSize: 16,
-                  color: ThemeColors.currentTheme == ThemeType.dark ? 
+                  color: ThemeColors.selectedTheme == ThemeType.dark ? 
                       const Color(0xFFFF5252) : const Color(0x99ff0000),
                 ),
               ),

@@ -63,6 +63,9 @@ dependencies:
   package_info_plus: ^1.4.2
   cached_network_image: ^3.3.1
 
+dependency_overrides:
+  archive: ^3.6.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -89,8 +92,7 @@ flutter:
   assets:
     - production/production.json
     - images/empty.png
-    - images/icon.png
-    - images/orange-sky.png
+    - images/icon.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -122,6 +124,6 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
 flutter_icons:
-  image_path: 'images/icon.png'
+  image_path: 'images/icon.jpeg'
   android: true
   ios: true
