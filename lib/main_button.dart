@@ -132,11 +132,13 @@ class MainButtonWidgetState extends State<MainButton> {
         return SizedBox(
           width: isIdle ? 90 : 60,
           height: isIdle ? 90 : 60,
-          child: content != null ? FloatingActionButton(
-            backgroundColor: isIdle ? ThemeColors.primaryColor : Colors.red,
-            onPressed: () { _onPressed(model); },
-            shape: const CircleBorder(),
-            child: content,
+          child: content != null ? Consumer<ThemeColors>(
+            builder: (context, theme, child) => FloatingActionButton(
+              backgroundColor: isIdle ? ThemeColors.primaryColor : Colors.red,
+              onPressed: () { _onPressed(model); },
+              shape: const CircleBorder(),
+              child: content,
+            ),
           ) : null, // This trailing comma makes auto-formatting nicer for build methods.
         );
       },

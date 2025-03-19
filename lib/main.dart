@@ -51,8 +51,11 @@ Future<void> main() async {
   // 初始化主题配置
   await ThemeColors.getCurrentTheme();
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => RunningModel(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => RunningModel()),
+        ChangeNotifierProvider(create: (context) => ThemeColors()),
+      ],
       child: const MyApp(),
     ),
   );

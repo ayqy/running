@@ -7,27 +7,33 @@ enum ThemeType {
   dark,
 }
 
-class ThemeColors {
+class ThemeColors extends ChangeNotifier {
+  static final ThemeColors _instance = ThemeColors._internal();
   static const selectedThemeKey = 'selected_theme';
-  static ThemeType? _selectedTheme;
+  ThemeType? _selectedTheme;
 
+  factory ThemeColors() {
+    return _instance;
+  }
 
+  ThemeColors._internal();
 
   static Future<ThemeType> getCurrentTheme() async {
-    if (_selectedTheme != null) {
-      return _selectedTheme!;
+    if (_instance._selectedTheme != null) {
+      return _instance._selectedTheme!;
     }
     String value = await Storage.get(selectedThemeKey);
-    _selectedTheme = value.isNotEmpty ? ThemeType.values[int.parse(value)] : ThemeType.dark;
-    return _selectedTheme!;
+    _instance._selectedTheme = value.isNotEmpty ? ThemeType.values[int.parse(value)] : ThemeType.dark;
+    return _instance._selectedTheme!;
   }
 
   static Future<void> setCurrentTheme(ThemeType theme) async {
-    _selectedTheme = theme;
+    _instance._selectedTheme = theme;
     await Storage.set(selectedThemeKey, '${theme.index}');
+    _instance.notifyListeners();
   }
 
-  static ThemeType get selectedTheme => _selectedTheme?? ThemeType.dark;
+  static ThemeType get selectedTheme => _instance._selectedTheme ?? ThemeType.dark;
 
   // 获取当前主题的颜色
   static Color get primaryColor => _getThemeColor(_primaryColors);
@@ -41,24 +47,24 @@ class ThemeColors {
   
   // 获取导航栏渐变色
   static List<Color> get navBarGradientColors => 
-      _selectedTheme == ThemeType.dark ? 
+      _instance._selectedTheme == ThemeType.dark ? 
       [const Color(0xFF2D2D2D), const Color(0xFF1A1A1A)] : 
       [const Color(0xFF64D5A3), const Color(0xFF5CC99F)];
 
   // 获取个人页面头部渐变背景色
   static List<Color> get profileHeaderGradientColors =>
-      _selectedTheme == ThemeType.dark ?
+      _instance._selectedTheme == ThemeType.dark ?
       [const Color(0xFF1A1A1A), const Color(0xFF2D3A30), const Color(0xFF1E3323)] :
       [const Color(0xFF64D5A3), const Color(0xFF5CC99F)];
 
   // 获取指定主题色值
   static Color _getThemeColor(Map<ThemeType, Color> themeColors) {
-    return themeColors[_selectedTheme ?? ThemeType.dark] ?? themeColors[ThemeType.light]!;
+    return themeColors[_instance._selectedTheme ?? ThemeType.dark] ?? themeColors[ThemeType.light]!;
   }
 
   // 各主题下的主色调
   static final Map<ThemeType, Color> _primaryColors = {
-    ThemeType.light: const Color(0xfff55555),
+    ThemeType.light: const Color(0xFF64D5A3), // 修改为与导航栏一致的绿色
     ThemeType.dark: const Color(0xFF1A1A1A),
   };
 
@@ -76,7 +82,7 @@ class ThemeColors {
 
   // 各主题下的普通文本颜色
   static final Map<ThemeType, Color> _regularTextColors = {
-    ThemeType.light: Colors.grey,
+    ThemeType.light: const Color(0xFF333333), // 修改为深灰色，提高可读性
     ThemeType.dark: const Color(0xFFB0B0B0),
   };
 

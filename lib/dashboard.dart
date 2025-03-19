@@ -106,7 +106,7 @@ class DashboardWidgetState extends State<Dashboard> {
               child: Icon(
                 icon,
                 size: 36,
-                color: Colors.orange,
+                color: ThemeColors.selectedColor,
               ),
             ),
             const SizedBox(
@@ -322,20 +322,23 @@ class DashboardWidgetState extends State<Dashboard> {
                   _buildSpeedPerKMCard(model),
                 ],
               ),
-              Consumer<RunningModel>(
-                builder: (context, RunningModel model, child) =>
-                  Visibility(
-                    visible: false,
-                    // visible: model.status == RunningStatus.done,
-                    child: Positioned(
-                      top: 0,
-                      right: 0,
-                      child: IconButton(
-                        icon: const Icon(MyIcon.share),
-                        color: Colors.orange,
-                        onPressed: _shareWeChatTimeline
-                      )
-                    ),
+              Consumer<ThemeColors>(
+                builder: (context, theme, child) =>
+                  Consumer<RunningModel>(
+                    builder: (context, RunningModel model, child) =>
+                      Visibility(
+                        visible: false,
+                        // visible: model.status == RunningStatus.done,
+                        child: Positioned(
+                          top: 0,
+                          right: 0,
+                          child: IconButton(
+                            icon: const Icon(MyIcon.share),
+                            color: ThemeColors.selectedTheme == ThemeType.light ? ThemeColors.selectedColor : Colors.orange,
+                            onPressed: _shareWeChatTimeline
+                          )
+                        ),
+                      ),
                   ),
               ),
             ],

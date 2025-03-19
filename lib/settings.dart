@@ -112,10 +112,10 @@ class _SettingsState extends State<Settings> {
                   selectedTheme = ThemeType.dark;
                 });
                 await ThemeColors.setCurrentTheme(ThemeType.dark);
-                toast('切换至冷酷黑，下次启动生效');
+                toast('已切换至冷酷黑');
               }
             }, {
-              'key': '活力橙',
+              'key': '活力绿',
               'text': '',
               'value': ThemeType.light,
               'selected': selectedTheme ?? ThemeType.dark,
@@ -124,7 +124,7 @@ class _SettingsState extends State<Settings> {
                   selectedTheme = ThemeType.light;
                 });
                 await ThemeColors.setCurrentTheme(ThemeType.light);
-                toast('切换至活力橙，下次启动生效');
+                toast('已切换至活力绿');
               }
             }]),
             _buildSectionTitle('音乐'),

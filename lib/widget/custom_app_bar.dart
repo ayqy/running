@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../const/ui.dart';
+import '../const/theme.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -15,13 +17,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
-      title: Text(title),
-      leading: leading,
-      bottom: bottom,
-      flexibleSpace: UIConsts.APPBAR_FLEXIBLE_SPACE,
-      foregroundColor: UIConsts.APPBAR_TEXT_COLOR,
+    return Consumer<ThemeColors>(
+      builder: (context, theme, child) => AppBar(
+        toolbarHeight: UIConsts.APPBAR_TOOLBAR_HEIGHT,
+        title: Text(title),
+        leading: leading,
+        bottom: bottom,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomCenter,
+              colors: ThemeColors.navBarGradientColors
+            ),
+          ),
+        ),
+        foregroundColor: ThemeColors.regularTextColor,
+      ),
     );
   }
 
