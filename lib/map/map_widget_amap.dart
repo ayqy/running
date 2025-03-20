@@ -5,6 +5,7 @@ import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:amap_flutter_map/amap_flutter_map.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:provider/provider.dart';
+import 'package:running/const/theme.dart';
 import 'package:running/const/ui.dart';
 import '../const/icon.dart';
 import '../model/running_model.dart';
@@ -366,7 +367,8 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
               ),
               _buildWidget(
                 Icon(
-                  isMusicWidgetActive ? Icons.music_note : Icons.music_off
+                  isMusicWidgetActive ? Icons.music_note : Icons.music_off,
+                  color: isMusicWidgetActive ? ThemeColors.selectedColor : null,
                 ),
                 onPressed: _onMusicWidgetPressed,
                 circular: true,

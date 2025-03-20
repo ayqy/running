@@ -33,7 +33,7 @@ class ThemeColors extends ChangeNotifier {
     _instance.notifyListeners();
   }
 
-  static ThemeType get selectedTheme => _instance._selectedTheme ?? ThemeType.dark;
+  static ThemeType get selectedTheme => _instance._selectedTheme ?? ThemeType.light;
 
   // 获取当前主题的颜色
   static Color get primaryColor => _getThemeColor(_primaryColors);

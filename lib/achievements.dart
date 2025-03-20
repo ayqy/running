@@ -31,14 +31,16 @@ class _AchievementsState extends State<Achievements> with SingleTickerProviderSt
     
     // 设置流光动画效果
     _animationController = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 1500),
       vsync: this,
     );
     
-    _animation = Tween<double>(begin: 0.0, end: 2.0).animate(_animationController)
-      ..addListener(() {
-        setState(() {});
-      });
+    _animation = Tween<double>(begin: 0.0, end: 2.0).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    ))..addListener(() {
+      setState(() {});
+    });
     
     _animationController.repeat();
   }
@@ -113,8 +115,14 @@ class _AchievementsState extends State<Achievements> with SingleTickerProviderSt
                     return LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [Colors.transparent, Colors.white, Colors.transparent],
-                      stops: [0.0, _animation.value - 1, _animation.value],
+                      colors: [
+                        Colors.transparent,
+                        Colors.white.withOpacity(0.2),
+                        Colors.white.withOpacity(0.15),
+                        Colors.white.withOpacity(0.2),
+                        Colors.transparent
+                      ],
+                      stops: [0.0, _animation.value - 1.2, _animation.value - 0.8, _animation.value - 0.4, _animation.value],
                       tileMode: TileMode.clamp,
                     ).createShader(bounds);
                   },
@@ -123,13 +131,26 @@ class _AchievementsState extends State<Achievements> with SingleTickerProviderSt
                     alignment: Alignment.center,
                     children: [
                       // 徽标图片
-                      Image.network(
-                        selectedBadge['imageUrl'],
-                        width: 120,
-                        height: 120,
-                        fit: BoxFit.contain,
-                        color: isAchieved ? null : Colors.grey,
-                        colorBlendMode: isAchieved ? BlendMode.dst : BlendMode.saturation,
+                      Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          boxShadow: isAchieved ? [
+                            BoxShadow(
+                              color: Colors.white.withOpacity(0.1),
+                              blurRadius: 15,
+                              spreadRadius: 2,
+                            ),
+                          ] : [],
+                        ),
+                        child: Image.network(
+                          selectedBadge['imageUrl'],
+                          width: 150,
+                          height: 150,
+                          fit: BoxFit.contain,
+                          color: isAchieved ? null : Colors.grey,
+                          colorBlendMode: isAchieved ? BlendMode.dst : BlendMode.saturation,
+                        ),
                       ),
                       // 未获得时显示锁定图标
                       if (!isAchieved)
