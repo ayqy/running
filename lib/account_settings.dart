@@ -290,24 +290,18 @@ class _AccountSettingsState extends State<AccountSettings> {
             }, {
               'key': '修改密码',
               'value': '',
-            }]),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _onDeleteAccountPressed,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ThemeColors.cardColor,
-                shadowColor: ThemeColors.dividerColor,
-                minimumSize: const Size.fromHeight(45),
-              ),
-              child: Text(
+            }, {
+              'key': '注销账号',
+              'value': Text(
                 '注销账号',
                 style: TextStyle(
-                  fontSize: 16,
                   color: ThemeColors.selectedTheme == ThemeType.dark ? 
                       const Color(0xFFFF5252) : const Color(0x99ff0000),
                 ),
               ),
-            ),
+              'onTap': _onDeleteAccountPressed,
+            }]),
+            const SizedBox(height: 20),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _onLogoutPressed,
