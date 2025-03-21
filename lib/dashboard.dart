@@ -313,7 +313,7 @@ class DashboardWidgetState extends State<Dashboard> {
           builder: (context, themeColors, child) {
             return Container(
               padding: const EdgeInsets.fromLTRB(10, 2, 10, 10),
-              color: ThemeColors.backgroundColor,
+              color: ThemeColors.cardColor,
               child: Stack(
                 children: [
                   Column(
