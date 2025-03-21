@@ -309,40 +309,45 @@ class DashboardWidgetState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Consumer<RunningModel>(
       builder: (context, RunningModel model, child) {
-        return Container(
-          padding: const EdgeInsets.fromLTRB(10, 2, 10, 10),
-          child: Stack(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
+        return Consumer<ThemeColors>(
+          builder: (context, themeColors, child) {
+            return Container(
+              padding: const EdgeInsets.fromLTRB(10, 2, 10, 10),
+              color: ThemeColors.backgroundColor,
+              child: Stack(
                 children: [
-                  // 统计信息卡
-                  _buildSummaryCard(model),
-                  // 每公里配速卡
-                  _buildSpeedPerKMCard(model),
-                ],
-              ),
-              Consumer<ThemeColors>(
-                builder: (context, theme, child) =>
-                  Consumer<RunningModel>(
-                    builder: (context, RunningModel model, child) =>
-                      Visibility(
-                        visible: false,
-                        // visible: model.status == RunningStatus.done,
-                        child: Positioned(
-                          top: 0,
-                          right: 0,
-                          child: IconButton(
-                            icon: const Icon(MyIcon.share),
-                            color: ThemeColors.selectedTheme == ThemeType.light ? ThemeColors.selectedColor : Colors.orange,
-                            onPressed: _shareWeChatTimeline
-                          )
-                        ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // 统计信息卡
+                      _buildSummaryCard(model),
+                      // 每公里配速卡
+                      _buildSpeedPerKMCard(model),
+                    ],
+                  ),
+                  Consumer<ThemeColors>(
+                    builder: (context, theme, child) =>
+                      Consumer<RunningModel>(
+                        builder: (context, RunningModel model, child) =>
+                          Visibility(
+                            visible: false,
+                            // visible: model.status == RunningStatus.done,
+                            child: Positioned(
+                              top: 0,
+                              right: 0,
+                              child: IconButton(
+                                icon: const Icon(MyIcon.share),
+                                color: ThemeColors.selectedTheme == ThemeType.light ? ThemeColors.selectedColor : Colors.orange,
+                                onPressed: _shareWeChatTimeline
+                              )
+                            ),
+                          ),
                       ),
                   ),
+                ],
               ),
-            ],
-          ),
+            );
+          }
         );
       }
     );
