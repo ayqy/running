@@ -15,7 +15,7 @@ class RunningModel extends ChangeNotifier {
   }
 
   // 运动类型
-  Map sportType = SportType.running;
+  Map sportType = SportType.ride;
   void setSportType(type) {
     sportType = type;
     notifyListeners();

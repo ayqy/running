@@ -411,7 +411,7 @@ class MapWidgetAMapState extends State<MapWidgetAMap> with TickerProviderStateMi
                 child: Consumer<RunningModel>(
                   builder: (context, RunningModel model, child) {
                     return RadioGroup(
-                      items: [SportType.running, SportType.ride],
+                      items: [SportType.ride, SportType.running],
                       value: model.sportType['value'],
                       onChange: _onSportTypeChanged(model),
                     );
