@@ -46,6 +46,26 @@ class _AccountSettingsState extends State<AccountSettings> {
     }
   }
 
+  _onDeleteAccountPressed() {
+    MyDialog.confirm(context, const Text(
+      '注销账号后，您的所有数据将被永久删除且无法恢复。\n确定要注销账号吗？',
+      style: TextStyle(fontSize: 16),
+    ), (close) async {
+      EasyLoading.show(status: '注销中...');
+      var result = await AccountAPI.remove();
+      if (result != false) {
+        await AccountUtil.removeToken();
+        EasyLoading.showSuccess('账号已注销');
+        if (mounted) {
+          Navigator.of(context).pop();
+        }
+      } else {
+        EasyLoading.showError('注销失败，请重试');
+      }
+      close();
+    }, title: '注销账号');
+  }
+
   void _setImageFileFromFile(XFile? value) {
     _imageFile = value;
   }
@@ -271,6 +291,23 @@ class _AccountSettingsState extends State<AccountSettings> {
               'key': '修改密码',
               'value': '',
             }]),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _onDeleteAccountPressed,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: ThemeColors.cardColor,
+                shadowColor: ThemeColors.dividerColor,
+                minimumSize: const Size.fromHeight(45),
+              ),
+              child: Text(
+                '注销账号',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: ThemeColors.selectedTheme == ThemeType.dark ? 
+                      const Color(0xFFFF5252) : const Color(0x99ff0000),
+                ),
+              ),
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _onLogoutPressed,
