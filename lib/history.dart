@@ -322,7 +322,8 @@ class _HistoryState extends State<History> {
                 const SizedBox(width: 10),
                 NumericText(
                     text: formatDate(DateTime.fromMillisecondsSinceEpoch(record['startTime']), [yyyy, '-', mm, '-', dd]),
-                    fontSize: 16
+                    fontSize: 16,
+                    color: ThemeColors.regularTextColor
                 ),
               ],
             ),
