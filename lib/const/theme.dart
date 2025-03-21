@@ -70,7 +70,7 @@ class ThemeColors extends ChangeNotifier {
 
   // 各主题下的背景色
   static final Map<ThemeType, Color> _backgroundColors = {
-    ThemeType.light: Colors.white,
+    ThemeType.light: const Color(0xfff6f7f7),
     ThemeType.dark: const Color(0xFF1A1A1A),
   };
 
