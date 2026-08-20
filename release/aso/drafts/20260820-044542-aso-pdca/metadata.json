@@ -1,0 +1,197 @@
+{
+  "attribution_limits": {
+    "sales_has_keyword_attribution": false,
+    "search_source_includes_search_ads": true
+  },
+  "baseline": {
+    "complete": true,
+    "metadata_hash": "8851cc35599a782ee394c5e2d2f44f3448fd80b282923db4ecbae02d087a65d6",
+    "values": {
+      "app_info_localizations": [
+        {
+          "id": "508d3740-73fd-4ad3-9cd5-d1062b66888c",
+          "locale": "zh-Hans",
+          "name": "晚风骑行",
+          "subtitle": "骑行跑步，刚刚好"
+        }
+      ],
+      "version_localizations": [
+        {
+          "description": "支持轨迹显示、语音播报、配速计算、历史记录、年度统计等实用功能，安全无广告。",
+          "id": "77379838-664a-43ff-8672-8fd4d0a620fe",
+          "keywords": "跑步,骑行,专业,运动,免费",
+          "locale": "zh-Hans",
+          "marketing_url": "https://node.ayqy.net/app-running/",
+          "promotional_text": "一款极简、刚好够用的骑行跑步App。",
+          "support_url": "https://node.ayqy.net/app-running/"
+        }
+      ]
+    }
+  },
+  "claim_evidence": [
+    {
+      "claim": "支持跑步与骑行两种运动类型",
+      "evidence_kind": "direct_source_code",
+      "source": "lib/const/sport_type.dart"
+    },
+    {
+      "claim": "记录位置轨迹并展示实时运动数据",
+      "evidence_kind": "direct_source_code",
+      "source": "lib/main.dart"
+    },
+    {
+      "claim": "提供历史运动记录回看",
+      "evidence_kind": "direct_source_code",
+      "source": "lib/history.dart"
+    },
+    {
+      "claim": "提供运动语音播报能力",
+      "evidence_kind": "direct_source_code",
+      "source": "lib/util/tts/tts.dart"
+    }
+  ],
+  "configuration_ready": true,
+  "experiment": {
+    "action": "metadata_localization",
+    "hypothesis": "用可验证的跑步与骑行记录能力解释产品价值，可能提高搜索访问后的首次下载转化；推广文本不影响搜索排名。",
+    "id": "running-ios-20260820T114542-metadata-localization",
+    "locale": "zh-Hans",
+    "reason": "localization_and_metadata_coordination_gap",
+    "status": "proposed",
+    "variable": "promotional_text"
+  },
+  "generated_at": "2026-08-20T11:45:42+00:00",
+  "identity": {
+    "apple_id": "6743190417",
+    "bundle_id": "net.ayqy.running",
+    "display_name": "晚风骑行",
+    "platform": "IOS",
+    "portfolio_id": "running-ios",
+    "project_root": "/Users/pocket/Documents/project/running",
+    "sku": "app_running"
+  },
+  "keyword_scorecards": {
+    "zh-Hans": [
+      {
+        "differentiation": 3,
+        "evidence_kind": "inference",
+        "placement": "keyword_research",
+        "policy_safety": 5,
+        "product_relevance": 5,
+        "proof_strength": 5,
+        "query": "跑步轨迹",
+        "risks": [],
+        "score": 23,
+        "search_volume": null,
+        "user_intent": 5
+      },
+      {
+        "differentiation": 4,
+        "evidence_kind": "inference",
+        "placement": "keyword_research",
+        "policy_safety": 5,
+        "product_relevance": 5,
+        "proof_strength": 5,
+        "query": "运动配速",
+        "risks": [],
+        "score": 23,
+        "search_volume": null,
+        "user_intent": 4
+      },
+      {
+        "differentiation": 3,
+        "evidence_kind": "inference",
+        "placement": "keyword_research",
+        "policy_safety": 5,
+        "product_relevance": 5,
+        "proof_strength": 5,
+        "query": "骑行记录",
+        "risks": [],
+        "score": 23,
+        "search_volume": null,
+        "user_intent": 5
+      }
+    ]
+  },
+  "kind": "24h-studio.aso-metadata-draft",
+  "localizations": {
+    "zh-Hans": {
+      "description": "支持轨迹显示、语音播报、配速计算、历史记录、年度统计等实用功能，安全无广告。",
+      "keywords": "跑步,骑行,专业,运动,免费",
+      "name": "晚风骑行",
+      "promotional_text": "记录跑步与骑行轨迹、实时配速和运动时长，回看历史运动数据；安全无广告。",
+      "subtitle": "骑行跑步，刚刚好"
+    }
+  },
+  "observed_live_version": "0.0.2.1",
+  "platform": "IOS",
+  "remote_operation": {
+    "allowed_fields": [
+      "promotional_text"
+    ],
+    "authorization_persisted": false,
+    "authorized": false,
+    "performed": false,
+    "required_guard": "CONFIGURE:ios:0.0.2.1"
+  },
+  "rollback": {
+    "available": true,
+    "metadata_hash": "8851cc35599a782ee394c5e2d2f44f3448fd80b282923db4ecbae02d087a65d6",
+    "values": {
+      "app_info_localizations": [
+        {
+          "id": "508d3740-73fd-4ad3-9cd5-d1062b66888c",
+          "locale": "zh-Hans",
+          "name": "晚风骑行",
+          "subtitle": "骑行跑步，刚刚好"
+        }
+      ],
+      "version_localizations": [
+        {
+          "description": "支持轨迹显示、语音播报、配速计算、历史记录、年度统计等实用功能，安全无广告。",
+          "id": "77379838-664a-43ff-8672-8fd4d0a620fe",
+          "keywords": "跑步,骑行,专业,运动,免费",
+          "locale": "zh-Hans",
+          "marketing_url": "https://node.ayqy.net/app-running/",
+          "promotional_text": "一款极简、刚好够用的骑行跑步App。",
+          "support_url": "https://node.ayqy.net/app-running/"
+        }
+      ]
+    }
+  },
+  "schema_version": 1,
+  "status": "proposed",
+  "success_metrics": {
+    "guardrails": [
+      "total_first_time_downloads",
+      "average_user_rating",
+      "user_rating_count",
+      "customer_sales_by_currency",
+      "developer_proceeds_by_currency"
+    ],
+    "maximum_complete_days": 42,
+    "minimum_complete_days": 14,
+    "primary": "search_first_time_downloads",
+    "search_metrics_include_search_ads": true,
+    "secondary": "search_impression_to_download_rate_percent"
+  },
+  "target_metadata_hash": "edca0e7eb3c09f35931b0e9380825534005e10484cce923468141c94349da059",
+  "target_version": "0.0.2.1",
+  "target_version_unresolved": false,
+  "trademark_policy": {
+    "excluded_from_automatic_keywords": [
+      "Codex",
+      "Claude Code",
+      "Gemini CLI"
+    ]
+  },
+  "unchanged": {
+    "bitmap_assets": true,
+    "brand_primary_name": true,
+    "categories": true,
+    "core_code": true,
+    "existing_screenshot_order": true,
+    "pricing": true,
+    "territories": true
+  }
+}

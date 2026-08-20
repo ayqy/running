@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "app": {
+    "portfolio_id": "running-ios",
+    "project_root": "/Users/pocket/Documents/project/running",
+    "display_name": "晚风骑行",
+    "platform": "IOS",
+    "bundle_id": "net.ayqy.running",
+    "sku": "app_running",
+    "apple_id": "6743190417",
+    "current_version": "0.0.2.1",
+    "primary_category": "Utilities",
+    "secondary_category": "Sports",
+    "supported_locales": ["zh-Hans"]
+  },
+  "identity_evidence": [
+    {
+      "path": "ios/Runner.xcodeproj/project.pbxproj",
+      "contains": "PRODUCT_BUNDLE_IDENTIFIER = net.ayqy.running;"
+    }
+  ],
+  "excluded_store_sources": [],
+  "product_truth": {
+    "primary_user_job": "记录跑步或骑行过程，并回看运动轨迹与历史数据",
+    "one_sentence_promise": "记录跑步和骑行的轨迹、配速与时长，并保留历史运动数据。",
+    "claims": [
+      {
+        "claim": "支持跑步与骑行两种运动类型",
+        "source": "lib/const/sport_type.dart",
+        "evidence_kind": "direct_source_code"
+      },
+      {
+        "claim": "记录位置轨迹并展示实时运动数据",
+        "source": "lib/main.dart",
+        "evidence_kind": "direct_source_code"
+      },
+      {
+        "claim": "提供历史运动记录回看",
+        "source": "lib/history.dart",
+        "evidence_kind": "direct_source_code"
+      },
+      {
+        "claim": "提供运动语音播报能力",
+        "source": "lib/util/tts/tts.dart",
+        "evidence_kind": "direct_source_code"
+      }
+    ]
+  },
+  "aso": {
+    "draft_seed": {
+      "action": "metadata_localization",
+      "variable": "promotional_text",
+      "locale": "zh-Hans",
+      "hypothesis": "用可验证的跑步与骑行记录能力解释产品价值，可能提高搜索访问后的首次下载转化；推广文本不影响搜索排名。"
+    },
+    "locales": {
+      "zh-Hans": {
+        "country": "us",
+        "query_candidates": [
+          {
+            "query": "骑行记录",
+            "product_relevance": 5,
+            "user_intent": 5,
+            "proof_strength": 5,
+            "differentiation": 3,
+            "policy_safety": 5,
+            "evidence_kind": "inference",
+            "placement": "keyword_research"
+          },
+          {
+            "query": "跑步轨迹",
+            "product_relevance": 5,
+            "user_intent": 5,
+            "proof_strength": 5,
+            "differentiation": 3,
+            "policy_safety": 5,
+            "evidence_kind": "inference",
+            "placement": "keyword_research"
+          },
+          {
+            "query": "运动配速",
+            "product_relevance": 5,
+            "user_intent": 4,
+            "proof_strength": 5,
+            "differentiation": 4,
+            "policy_safety": 5,
+            "evidence_kind": "inference",
+            "placement": "keyword_research"
+          }
+        ],
+        "copy": {
+          "name": "晚风骑行",
+          "subtitle": "跑步与骑行轨迹记录",
+          "keyword_terms": ["骑行记录", "跑步轨迹", "运动配速", "历史记录"],
+          "promotional_text": "记录跑步与骑行轨迹、实时配速和运动时长，回看历史运动数据；安全无广告。",
+          "description": "晚风骑行用于记录跑步与骑行过程，展示轨迹、配速和运动时长，并支持回看历史记录。部分定位和语音功能依赖设备权限与服务可用性。"
+        }
+      }
+    },
+    "trademark_risks": [],
+    "action_policy": {
+      "one_active_experiment": true,
+      "remote_mutation_allowed": false,
+      "core_code_changes_allowed": false,
+      "pricing_changes_allowed": false,
+      "category_changes_allowed": false,
+      "new_bitmap_generation_allowed": false,
+      "reuse_existing_screenshots": true
+    }
+  }
+}
