@@ -78,7 +78,7 @@
       {
         "query": "骑行",
         "intent": "骑行历史与累计里程",
-        "relevance": "现有可绑定词，广泛且竞争强；只分配到骑行历史页",
+        "relevance": "现有可绑定词且无旧CPP所有者；US软件API两次位置53，仅是公开供给旁证，原生排名未知",
         "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/query-opportunity-pool.json",
         "evidence_kind": "direct",
         "scores": {
@@ -93,9 +93,9 @@
       {
         "query": "骑行配速",
         "intent": "骑行历史与累计里程",
-        "relevance": "源图和代码支持配速，首次查询失败且结果混有交友；目录无配速，暂不绑定",
+        "relevance": "批准原图支持真实配速；当前US查询与目录配速词未取证，保持未知不绑定",
         "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/query-opportunity-pool.json",
-        "evidence_kind": "direct",
+        "evidence_kind": "inference",
         "scores": {
           "product_relevance": 5,
           "user_intent": 2,
@@ -139,6 +139,14 @@
       "status": "ready",
       "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/running-live-baseline.json",
       "evidence_kind": "direct"
+    },
+    {
+      "id": "US-market-availability",
+      "name": "主观测市场当前可售",
+      "scope": "version_each",
+      "status": "ready",
+      "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/running-territory-availability.json",
+      "evidence_kind": "direct"
     }
   ],
   "assets": [],
@@ -153,7 +161,7 @@
     "preflight": {
       "commands": [
         {
-          "label": "preflight: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "label": "preflight: 晚风骑行0.0.2.1 US/zh-Hans Cycling History CPP only",
           "argv": [
             "/Users/pocket/.venv/bin/python3",
             "{pub_root}/scripts/ios_custom_product_page.py",
@@ -175,7 +183,7 @@
     "configure": {
       "commands": [
         {
-          "label": "configure: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "label": "configure: 晚风骑行0.0.2.1 US/zh-Hans Cycling History CPP only",
           "argv": [
             "/Users/pocket/.venv/bin/python3",
             "{pub_root}/scripts/ios_custom_product_page.py",
@@ -201,7 +209,7 @@
     "submit": {
       "commands": [
         {
-          "label": "submit: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "label": "submit: 晚风骑行0.0.2.1 US/zh-Hans Cycling History CPP only",
           "argv": [
             "/Users/pocket/.venv/bin/python3",
             "{pub_root}/scripts/ios_custom_product_page.py",
@@ -225,7 +233,7 @@
     "release": {
       "commands": [
         {
-          "label": "release: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "label": "release: 晚风骑行0.0.2.1 US/zh-Hans Cycling History CPP only",
           "argv": [
             "/Users/pocket/.venv/bin/python3",
             "{pub_root}/scripts/ios_custom_product_page.py",
@@ -250,7 +258,7 @@
     "status": {
       "commands": [
         {
-          "label": "status: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "label": "status: 晚风骑行0.0.2.1 US/zh-Hans Cycling History CPP only",
           "argv": [
             "/Users/pocket/.venv/bin/python3",
             "{pub_root}/scripts/ios_custom_product_page.py",
