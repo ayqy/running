@@ -1,0 +1,275 @@
+{
+  "schema_version": 2,
+  "product": {
+    "name": "晚风骑行",
+    "platform": "ios",
+    "version": "0.0.2.1",
+    "root": "/Users/pocket/Documents/project/running"
+  },
+  "source": {
+    "commit": "",
+    "commit_policy": "resolve_at_preflight",
+    "require_clean": true
+  },
+  "platform_config": {
+    "ios": {
+      "store_platform": "IOS",
+      "bundle_id": "net.ayqy.running",
+      "release_surface": "custom_product_page",
+      "custom_product_page_config": "/Users/pocket/Documents/project/running/docs/aso/cpp/cycling-history-20261003.json"
+    }
+  },
+  "metadata": {},
+  "rules_researched": [
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-03",
+      "claim": "Custom product pages can use distinct screenshots, promotional text, deep links, unique URLs, and assigned search keywords after App Review.",
+      "topic": "lifecycle",
+      "evidence_kind": "direct"
+    },
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-03",
+      "claim": "Custom product pages may use screenshots and promotional text tailored to a specific audience; reuse the bound approved task screenshots and write truthful CPP-only task copy.",
+      "topic": "assets",
+      "evidence_kind": "direct"
+    },
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-03",
+      "claim": "A custom product page must be approved before it can be made publicly available; configuration and review submission are separate from public release.",
+      "topic": "review",
+      "evidence_kind": "direct"
+    }
+  ],
+  "growth": {
+    "keyword_candidates": [
+      {
+        "query": "骑行记录",
+        "intent": "骑行历史与累计里程",
+        "relevance": "真实骑行历史与轨迹记录；两次公开软件查询有同任务竞品，目标未见",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/query-opportunity-pool.json",
+        "evidence_kind": "direct",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 5,
+          "proof_strength": 4,
+          "differentiation": 3,
+          "policy_safety": 5
+        },
+        "selection": "query_monitoring_only"
+      },
+      {
+        "query": "骑行里程",
+        "intent": "骑行历史与累计里程",
+        "relevance": "真实累计里程与历史距离；两次公开软件查询目标未见",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/query-opportunity-pool.json",
+        "evidence_kind": "direct",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 4,
+          "proof_strength": 4,
+          "differentiation": 3,
+          "policy_safety": 5
+        },
+        "selection": "query_monitoring_only"
+      },
+      {
+        "query": "骑行",
+        "intent": "骑行历史与累计里程",
+        "relevance": "现有可绑定词，广泛且竞争强；只分配到骑行历史页",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/query-opportunity-pool.json",
+        "evidence_kind": "direct",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 3,
+          "proof_strength": 4,
+          "differentiation": 3,
+          "policy_safety": 5
+        },
+        "selection": "selected_catalog_keyword"
+      },
+      {
+        "query": "骑行配速",
+        "intent": "骑行历史与累计里程",
+        "relevance": "源图和代码支持配速，首次查询失败且结果混有交友；目录无配速，暂不绑定",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/query-opportunity-pool.json",
+        "evidence_kind": "direct",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 2,
+          "proof_strength": 4,
+          "differentiation": 3,
+          "policy_safety": 5
+        },
+        "selection": "query_monitoring_only"
+      }
+    ],
+    "claim_evidence": [
+      {
+        "claim": "骑行时记录轨迹、距离、配速和时长；结束后在骑行历史中查看每次距离、均速与用时，并查看累计骑行里程。定位功能需设备授权。",
+        "source": "/Users/pocket/Documents/project/running/lib/history.dart; /Users/pocket/Documents/project/running/lib/dashboard.dart; /Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/approved-asset-reuse.json",
+        "evidence_kind": "direct"
+      }
+    ],
+    "asset_reuse_inventory": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/approved-asset-reuse.json"
+  },
+  "category_assessment": {
+    "selected": "Utilities",
+    "alternatives": [
+      "Sports"
+    ],
+    "rationale": "preserve current shipped categories for CPP-only action",
+    "evidence_kind": "inference"
+  },
+  "qualification_assessment": [
+    {
+      "id": "app-store-connect-auth",
+      "name": "Managed Login official API probe",
+      "scope": "team_once",
+      "status": "ready",
+      "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/login-receipt.json",
+      "evidence_kind": "direct"
+    },
+    {
+      "id": "approved-template",
+      "name": "Live0.0.2.1 zh-Hans approved template",
+      "scope": "version_each",
+      "status": "ready",
+      "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/running-live-baseline.json",
+      "evidence_kind": "direct"
+    }
+  ],
+  "assets": [],
+  "artifacts": [],
+  "rejection_plan": {
+    "official_rule_map": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/apple-official-rules.json",
+    "code_evidence_paths": "/Users/pocket/Documents/project/running/lib/history.dart",
+    "communication_position": "Respond only to future actual CPP finding",
+    "code_change_strategy": "No core code or build changes authorized"
+  },
+  "automation": {
+    "preflight": {
+      "commands": [
+        {
+          "label": "preflight: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "preflight",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/cycling-history-20261003.json",
+            "--evidence",
+            "{evidence_dir}/cpp-preflight.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 600,
+          "read_only": true
+        }
+      ],
+      "covers": []
+    },
+    "configure": {
+      "commands": [
+        {
+          "label": "configure: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "configure",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/cycling-history-20261003.json",
+            "--evidence",
+            "{evidence_dir}/cpp-configure.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 900
+        }
+      ],
+      "covers": [
+        "custom_product_page",
+        "screenshot_clone",
+        "search_keyword_binding",
+        "terminal_status"
+      ]
+    },
+    "submit": {
+      "commands": [
+        {
+          "label": "submit: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "submit",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/cycling-history-20261003.json",
+            "--evidence",
+            "{evidence_dir}/cpp-submit.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 900
+        }
+      ],
+      "covers": [
+        "custom_product_page_review_submit",
+        "terminal_status"
+      ]
+    },
+    "release": {
+      "commands": [
+        {
+          "label": "release: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "release",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/cycling-history-20261003.json",
+            "--evidence",
+            "{evidence_dir}/cpp-release.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 900
+        }
+      ],
+      "covers": [
+        "custom_product_page_visibility",
+        "public_storefront_e2e",
+        "terminal_status"
+      ]
+    },
+    "status": {
+      "commands": [
+        {
+          "label": "status: 晚风骑行0.0.2.1 CN/zh-Hans Cycling History CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "status",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/cycling-history-20261003.json",
+            "--evidence",
+            "{evidence_dir}/cpp-status.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 600,
+          "read_only": true
+        }
+      ],
+      "covers": [
+        "terminal_status"
+      ]
+    }
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "experiment_id": "running-ios-20261003-cn-zh-hans-cpp-cycling-history",
+  "continued_prior_act": {
+    "decision": "observe",
+    "reason": "保留已核实的新词关系；首次公开后0完整日，原生查询、同口径Unique/下载/付费样本未达门槛，不能判won/lost或宣称自然排名、营收提升。当前其他独立单元继续，未来观察由既有槽接力。"
+  },
+  "continued_next_plan": "立即核验晚风骑行0.0.2.1 zh-Hans批准原图、MD5、设备槽位、骑行/配速查询意图和目录词所有权；合格则通过$pub预注册并配置独立CPP。保留五项待审CPP，不改语音promo，也不重放EnjoyCoding词关系。北京时间2026-10-03 08:00既有独立ASO槽复核审批；新词最早成熟日为北京时间2026-10-17 15:00。",
+  "scope": {
+    "app_id": "6743190417",
+    "sku": "app_running",
+    "bundle_id": "net.ayqy.running",
+    "version": "0.0.2.1",
+    "app_store_version_id": "fc48559d-f2d7-4741-8f2f-9d485da1ea5a",
+    "source_localization_id": "77379838-664a-43ff-8672-8fd4d0a620fe",
+    "storefront": "CN",
+    "locale": "zh-Hans",
+    "keywords": [
+      "骑行"
+    ],
+    "variable": "custom_product_page",
+    "audience": "CN/zh-Hans骑行历史/里程查询用户；所有使用该CPP fallback地区同属处理范围"
+  },
+  "hypothesis": "骑行历史意图页公开后，在至少14个完整Pacific日且匹配对照与数据完整时，骑行记录查询人群的首次下载率经中断时间序列和未处理人群校正后较基线提高至少20%，且查询可见性、质量与同币种收益护栏不恶化。",
+  "baseline": {
+    "CPP": null,
+    "keyword_relationships": [],
+    "source_original_MD5s": [
+      "38c4e59d95e0d49c60286983954dc230",
+      "5ec8400f52983a7e2afaef8db75601aa",
+      "381a760e97e85fd12bd1bedc47a73010",
+      "b5c5ae4e393ff6c37c3a02bd7300672d",
+      "9fa587cd8d0ce351b32934bdeb8046f1"
+    ],
+    "source_screenshot_hash": "c5c108dbde26d4555d2fa5d1aa543b29bead71a7410c681600a0ffa8343221a8",
+    "source_default_hash": "7f36453d8289a05e6134757714fe42bcde00c8bd60d5b60a34d0dab86220a35d",
+    "source_promotional_text_hash": "58c3b50eddf1bdefc900ffcdd8d6117e4bccb8dfb09a3208f789c8b2ebcc1697",
+    "query_pool": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-03/query-opportunity-pool.json",
+    "native_rank": "unknown",
+    "unique_impressions": null,
+    "first_time_downloads": null,
+    "paid_users": null,
+    "customer_sales_by_currency": null,
+    "developer_proceeds_by_currency": null,
+    "current_search_event_counts": 11,
+    "comparison_search_event_counts": 22,
+    "counts_boundary": "partial Standard Counts; not Unique or full-window natural search baseline"
+  },
+  "control_population": "默认页原语音promo和五张截图冻结；变更前14日CN/zh-Hans同查询默认页和可证明未处理人群作准实验对照，跑步轨迹未绑定查询只作趋势旁证。所有使用zh-Hans/fallback CPP地区均为treated，不能假装未改locale对照。默认promo实验的App级后置聚合将受CPP新增流量混杂，改用查询/页面切片；缺可分离对照则inconclusive。",
+  "sample_threshold": "公开内容与后台首次完整匹配后至少14个完整Pacific日；100同口径CPP Unique/search_blended曝光、10首次下载、目标和未改查询各28份固定设备/近似时段原生快照、完整前后Downloads/Sales与匹配未处理人群。100/10仅最低门槛；won还需校正lift>=20%且90%区间排除0。缺原生基线/匹配对照或只有Counts则不可判won。",
+  "stop_loss": "版本/原图MD5/所有权漂移或不实承诺立即停止；成熟同口径首次下载率或同币种收益下降>=20%且证据充分，或质量显著恶化，仅隐藏新增CPP并双回读。首次公开匹配后42日仍不足/混杂则inconclusive；护栏未证实恶化时可保留但标未证明。",
+  "first_clock": null,
+  "observation_start": "first verified ASC + exact public text and first3 image match",
+  "observation_deadline": null,
+  "deadline_rule": "at least14 complete Pacific days; maximum42days from first public match, preserve null clock until real public availability",
+  "first_payment_clock": {
+    "first_observed_positive_apple_report_day": "2026-07-25",
+    "report_timezone": "America/Los_Angeles",
+    "first_actual_order_time": "unknown",
+    "historical_paid_sales": {
+      "CNY": 60
+    },
+    "historical_developer_proceeds": {
+      "CNY": 44.35
+    },
+    "is_current_window_or_natural_query_revenue": false
+  },
+  "rollback": {
+    "surface": "new CPP only",
+    "action": "approval-bound separately scoped pub release visibility=false; preserve default source localization/creative",
+    "before": {
+      "CPP": null,
+      "bindings": [],
+      "default_state_hash": "7f36453d8289a05e6134757714fe42bcde00c8bd60d5b60a34d0dab86220a35d"
+    }
+  },
+  "primary_metric": "matched audience First-Time Downloads per Unique/search_blended impression",
+  "secondary_metrics": [
+    "query coverage/visibility",
+    "Unique impressions organic_adjusted if same definition Ads report exists else search_blended",
+    "Unique Product Page Views diagnostic branch",
+    "Apple Unique impressions→Total Downloads Conversion Rate"
+  ],
+  "revenue_guardrails": "real paid Apple transactions only, no free units counted, customer sales and developer proceeds kept by currency; query-level sales attribution unknown",
+  "active_objectives": [
+    {
+      "id": "blog-mowen-200-home-entry-learning-20260926",
+      "revision": 1,
+      "objective": "48小时内让已发生同SKU真实付款的CNY99数字内容通过一个如实站内入口被真实读者发现，并作首款增量机制决定",
+      "project": "blog",
+      "deadline": "2026-09-28T02:35:38+00:00",
+      "key_results": [
+        {
+          "id": "one-live-truthful-home-entry",
+          "target": 1,
+          "deadline": "2026-09-27T11:05:38+08:00",
+          "initiatives": [
+            {
+              "action": "显式调用$market核同SKU历史真实订单、当前68篇和风险边界，冻结一句诚实入口文案。",
+              "expected_result": "买方、已交付范围、CNY99和停止条件与当前生产证据一致。",
+              "skills": [
+                "$market"
+              ]
+            },
+            {
+              "action": "在Blog clean worktree原生实现恰好一条首页入口及同SKU去标识来源键，保持价格、文章正文、登录、支付、权益不变。",
+              "expected_result": "单入口可导航且不会把合成探针计为真实访问或订单。",
+              "skills": [],
+              "no_skill_reason": "Blog现有Web组件与订单来源字段可原生小范围实现，没有对应的Web开发专用skill。"
+            },
+            {
+              "action": "显式调用$pub按网站release完成定向回归、默认分支commit/push、现有生产发布与匿名桌面/移动E2E。",
+              "expected_result": "真实线上入口、商品页和原支付/权益不变量可回读。",
+              "skills": [
+                "$pub"
+              ]
+            }
+          ],
+          "latest_cycle_path": "/Users/pocket/Documents/project/fangfang/.fangfang/ceo/cycles.json",
+          "latest_result": {
+            "check": {
+              "prediction": "成熟窗口至少1位同键去重真实商品到站。",
+              "actual": {
+                "source_sku_observed_unique_users": 0,
+                "verified_real_source_arrivals": 0,
+                "checkout_clicks": 0,
+                "new_same_sku_orders": 0,
+                "new_true_paid": 0,
+                "new_true_fulfilled": 0,
+                "gross_increment_minor": 0,
+                "currency": "CNY",
+                "recorded_refund_or_reversal_events": 0,
+                "historic_provider_refund_statement": "unknown，不推断历史净收入",
+                "observed_home_users": 6,
+                "home_users_are_confirmed_entry_impressions": false,
+                "late_unattributed_sku_observed_users": 1,
+                "late_visit_counted_toward_goal": false
+              },
+              "sample_size": 0,
+              "verdict": "lost",
+              "evidence": "ga4-readback.json、ga4-crosscheck.json成功返回0；order-aggregate.json、payment-window-audit.json确认无新增付款；state-delta.json区分历史和晚到。"
+            },
+            "act": {
+              "decision": "stop",
+              "reason": "原目标到期且完整48小时补充窗口同键到站、checkout和新增真实付款均0；期限后无同cohort付款信号。按预设规则止损，不将零样本推为商品没有需求。"
+            },
+            "owner_task": "FF-0833",
+            "boundary": "只读完整owner交接，不用ASO局部完成替代O达成"
+          },
+          "current": 1
+        },
+        {
+          "id": "one-real-sku-entry-from-home",
+          "target": 1,
+          "deadline": "2026-09-28T10:05:38+08:00",
+          "initiatives": [
+            {
+              "action": "执行任务只建立同cohort可审计、probe隔离的入口→商品页测量；完成后由独立Check按真实发布时间读取成熟窗口。",
+              "expected_result": "真实到站数、checkout与paid分层，缺数据标unknown，不把预览/合成探针当客户。",
+              "skills": [],
+              "no_skill_reason": "复用Blog现有原生匿名分析与Order.productSlug字段；无需新渠道skill。"
+            }
+          ],
+          "latest_cycle_path": "/Users/pocket/Documents/project/fangfang/.fangfang/ceo/cycles.json",
+          "latest_result": {
+            "check": {
+              "prediction": "成熟窗口至少1位同键去重真实商品到站。",
+              "actual": {
+                "source_sku_observed_unique_users": 0,
+                "verified_real_source_arrivals": 0,
+                "checkout_clicks": 0,
+                "new_same_sku_orders": 0,
+                "new_true_paid": 0,
+                "new_true_fulfilled": 0,
+                "gross_increment_minor": 0,
+                "currency": "CNY",
+                "recorded_refund_or_reversal_events": 0,
+                "historic_provider_refund_statement": "unknown，不推断历史净收入",
+                "observed_home_users": 6,
+                "home_users_are_confirmed_entry_impressions": false,
+                "late_unattributed_sku_observed_users": 1,
+                "late_visit_counted_toward_goal": false
+              },
+              "sample_size": 0,
+              "verdict": "lost",
+              "evidence": "ga4-readback.json、ga4-crosscheck.json成功返回0；order-aggregate.json、payment-window-audit.json确认无新增付款；state-delta.json区分历史和晚到。"
+            },
+            "act": {
+              "decision": "stop",
+              "reason": "原目标到期且完整48小时补充窗口同键到站、checkout和新增真实付款均0；期限后无同cohort付款信号。按预设规则止损，不将零样本推为商品没有需求。"
+            },
+            "owner_task": "FF-0833",
+            "boundary": "只读完整owner交接，不用ASO局部完成替代O达成"
+          },
+          "current": 0
+        },
+        {
+          "id": "one-evidence-backed-placement-decision",
+          "target": 1,
+          "deadline": "2026-09-28T10:35:38+08:00",
+          "initiatives": [
+            {
+              "action": "执行完成后才按after_task+至少24小时排独立check；检查新成熟样本与现金信号，不重复实现。",
+              "expected_result": "按真实新证据作adopt/adapt/stop；覆盖不完整则pending并说明解除条件。",
+              "skills": [
+                "$market"
+              ]
+            }
+          ],
+          "latest_cycle_path": "/Users/pocket/Documents/project/fangfang/.fangfang/ceo/cycles.json",
+          "latest_result": {
+            "check": {
+              "prediction": "成熟窗口至少1位同键去重真实商品到站。",
+              "actual": {
+                "source_sku_observed_unique_users": 0,
+                "verified_real_source_arrivals": 0,
+                "checkout_clicks": 0,
+                "new_same_sku_orders": 0,
+                "new_true_paid": 0,
+                "new_true_fulfilled": 0,
+                "gross_increment_minor": 0,
+                "currency": "CNY",
+                "recorded_refund_or_reversal_events": 0,
+                "historic_provider_refund_statement": "unknown，不推断历史净收入",
+                "observed_home_users": 6,
+                "home_users_are_confirmed_entry_impressions": false,
+                "late_unattributed_sku_observed_users": 1,
+                "late_visit_counted_toward_goal": false
+              },
+              "sample_size": 0,
+              "verdict": "lost",
+              "evidence": "ga4-readback.json、ga4-crosscheck.json成功返回0；order-aggregate.json、payment-window-audit.json确认无新增付款；state-delta.json区分历史和晚到。"
+            },
+            "act": {
+              "decision": "stop",
+              "reason": "原目标到期且完整48小时补充窗口同键到站、checkout和新增真实付款均0；期限后无同cohort付款信号。按预设规则止损，不将零样本推为商品没有需求。"
+            },
+            "owner_task": "FF-0833",
+            "boundary": "只读完整owner交接，不用ASO局部完成替代O达成"
+          },
+          "current": 1
+        }
+      ],
+      "latest_owner_decision": {
+        "operation": "opportunity",
+        "id": "blog-mowen-200-home-entry-learning-20260926",
+        "decision": "stop",
+        "reason": null,
+        "progress": null,
+        "check": null,
+        "act": null,
+        "revision": 3
+      },
+      "latest_owner_cycle": {
+        "task": "FF-0833",
+        "recorded_at": "2026-10-02T16:26:54.128266+08:00",
+        "check": {
+          "prediction": "成熟窗口至少1位同键去重真实商品到站。",
+          "actual": {
+            "source_sku_observed_unique_users": 0,
+            "verified_real_source_arrivals": 0,
+            "checkout_clicks": 0,
+            "new_same_sku_orders": 0,
+            "new_true_paid": 0,
+            "new_true_fulfilled": 0,
+            "gross_increment_minor": 0,
+            "currency": "CNY",
+            "recorded_refund_or_reversal_events": 0,
+            "historic_provider_refund_statement": "unknown，不推断历史净收入",
+            "observed_home_users": 6,
+            "home_users_are_confirmed_entry_impressions": false,
+            "late_unattributed_sku_observed_users": 1,
+            "late_visit_counted_toward_goal": false
+          },
+          "sample_size": 0,
+          "verdict": "lost",
+          "evidence": "ga4-readback.json、ga4-crosscheck.json成功返回0；order-aggregate.json、payment-window-audit.json确认无新增付款；state-delta.json区分历史和晚到。"
+        },
+        "act": {
+          "decision": "stop",
+          "reason": "原目标到期且完整48小时补充窗口同键到站、checkout和新增真实付款均0；期限后无同cohort付款信号。按预设规则止损，不将零样本推为商品没有需求。"
+        }
+      },
+      "overall_revenue_O_attained": false,
+      "new_valid_paid_revenue_CNY": 0,
+      "owner_act": "stop"
+    }
+  ],
+  "active_ASO_driven_KR_count": 0,
+  "pre_registered_at": "2026-10-03T04:59:43.305832+08:00",
+  "next_check_at": "2026-10-03T08:00:00+08:00",
+  "business_context_preflight_correction": "只纠正同一次只读CEO快照的owner progress提取，1/1、0/1、1/1；实验假设、时钟、样本与止损均未变"
+}

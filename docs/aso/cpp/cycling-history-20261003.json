@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "kind": "pub.ios-custom-product-page",
+  "task": "FF-0879",
+  "experiment_id": "running-ios-20261003-cn-zh-hans-cpp-cycling-history",
+  "app_id": "6743190417",
+  "bundle_id": "net.ayqy.running",
+  "sku": "app_running",
+  "version": "0.0.2.1",
+  "app_store_version_id": "fc48559d-f2d7-4741-8f2f-9d485da1ea5a",
+  "source_localization_id": "77379838-664a-43ff-8672-8fd4d0a620fe",
+  "locale": "zh-Hans",
+  "storefront": "CN",
+  "page_name": "Cycling History ZH",
+  "keywords": [
+    "骑行"
+  ],
+  "promotional_text": "骑行时记录轨迹、距离、配速和时长；结束后在骑行历史中查看每次距离、均速与用时，并查看累计骑行里程。定位功能需设备授权。",
+  "screenshot_order": {
+    "APP_IPHONE_67": [
+      2,
+      1,
+      3,
+      4,
+      5
+    ]
+  },
+  "clone_timeout_seconds": 300,
+  "poll_seconds": 5,
+  "mode": "clone_page",
+  "variable": "custom_product_page",
+  "audience": "CN/zh-Hans骑行历史/里程查询用户；所有使用该CPP fallback地区同属处理范围",
+  "baseline": "无CPP；线上5张批准中文UI图只有APP_IPHONE_67，目录骑行无CPP所有者；原生排名/Unique/完整下载/收入unknown",
+  "prediction": "骑行历史意图页公开后，在至少14个完整Pacific日且匹配对照与数据完整时，骑行记录查询人群的首次下载率经中断时间序列和未处理人群校正后较基线提高至少20%，且查询可见性、质量与同币种收益护栏不恶化。",
+  "sample_gate": "公开内容与后台首次完整匹配后至少14个完整Pacific日；100同口径CPP Unique/search_blended曝光、10首次下载、目标和未改查询各28份固定设备/近似时段原生快照、完整前后Downloads/Sales与匹配未处理人群。100/10仅最低门槛；won还需校正lift>=20%且90%区间排除0。缺原生基线/匹配对照或只有Counts则不可判won。",
+  "loss_limit": "版本/原图MD5/所有权漂移或不实承诺立即停止；成熟同口径首次下载率或同币种收益下降>=20%且证据充分，或质量显著恶化，仅隐藏新增CPP并双回读。首次公开匹配后42日仍不足/混杂则inconclusive；护栏未证实恶化时可保留但标未证明。",
+  "control": "默认页原语音promo和五张截图冻结；变更前14日CN/zh-Hans同查询默认页和可证明未处理人群作准实验对照，跑步轨迹未绑定查询只作趋势旁证。所有使用zh-Hans/fallback CPP地区均为treated，不能假装未改locale对照。默认promo实验的App级后置聚合将受CPP新增流量混杂，改用查询/页面切片；缺可分离对照则inconclusive。",
+  "asset_reuse_reason": "复用线上0.0.2.1五张已批准骑行原图，仅在CPP重排前两张；默认页的语音promo、素材和元数据均保留"
+}
