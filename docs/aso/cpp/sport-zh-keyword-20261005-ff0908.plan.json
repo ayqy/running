@@ -1,0 +1,63 @@
+{
+  "experiment_id": "running-ios-20261005-us-zh-hans-cpp-sport",
+  "continued_prior_act": {
+    "decision": "observe",
+    "reason": "技术双验通过，保留关系；经营样本0，未满14完整日且缺可比原生前置、真正对照和中断时间序列，不能判won或scale。污染事件已记录，其他独立冷启动资格继续推进。"
+  },
+  "continued_next_plan": "立即核验MeowStreak 1.1 US/zh-Hans现存CPP及未分配的真实习惯或提醒目录词，检查批准前三图、MD5和精确实验锁；合格单词追加并双验，否则转下一独立surface。保留全部旧关系及审核，不重放成功配置，不等待未来日期。",
+  "fallback_reason": "MeowStreak中文六目录词未分配但无中文批准CPP，无法执行指定单词追加；按契约转独立当前批准surface。",
+  "scope": {
+    "app_id": "6743190417",
+    "sku": "app_running",
+    "bundle_id": "net.ayqy.running",
+    "version": "0.0.2.1",
+    "storefront": "US",
+    "locale": "zh-Hans",
+    "page_id": "5b18e483-13f5-4c51-ac58-5751e2cfdd1c",
+    "page_version_id": "f6800ad2-9eae-4120-8dd5-87b0bc359a13",
+    "localization_id": "c43268b7-216a-43ea-ab97-9de0a5a65eed",
+    "variable": "keyword_relationship:运动",
+    "audience": "US/zh-Hans希望记录骑行运动轨迹、距离、均速和用时并回看历史的用户；运动泛词含其他运动意图，全部使用同zh-Hans/fallback CPP地区可能treated，US仅主观测切片。"
+  },
+  "hypothesis": "仅追加运动关系并冻结全部现有内容后，运动/骑行运动/骑行记录查询簇在至少14个完整Pacific日和可比原生前置样本、ITS及真正未处理对照齐备时，原生前20位可见率校正增加至少20个百分点，首次下载、质量与分币种收益护栏不恶化。",
+  "baseline": {
+    "keywords": [
+      "骑行"
+    ],
+    "candidate_owner": [],
+    "protected_hash": "01da69c577f5998d0f7d314a2fe7d8864770d3e493bda03f074c7bd49fdf7aa2",
+    "source_screenshots_hash": "69f49865a4369834ff854d8a9c66814f64a8a6bf493f28b44b7ed7633ff59210",
+    "promotional_text_hash": "362f5a850836311c4de31434bb6e76cf1aa710088e3c438fa0afb5b0977bbb2f",
+    "native_rank": "unknown",
+    "software_API_snapshots": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/running-query-snapshots.json",
+    "repeat": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/running-query-repeat.json",
+    "Unique_impressions": null,
+    "FTD": null,
+    "paid_users": null,
+    "sales_and_proceeds": "partial coverage inherited, not zero",
+    "search_source": "search_blended"
+  },
+  "control_population": "冻结默认中文语音promo和全部元数据、所有五张图、骑行关系及其他App旧关系/审核。新增词与原promo/骑行词为不同物理变量；运动/骑行运动/骑行记录可能重叠treated，均不作为未处理对照。共享CPP/App聚合从追加后混杂；对旧对象只加旁路事件，保留原假设/首钟/首款时钟。只有可证明未接收同CPP的人群和14日前置才能作为真正对照，否则inconclusive。",
+  "sample_threshold": "至少14个完整Pacific日；三查询各28份同US/zh-Hans固定原生iPhone/系统/近似时段快照及可比前置样本，真正未处理的查询/locale/storefront对照和ITS；100同定义Unique/search_blended曝光、10FTD和完整前后Downloads/Sales为最低基数。won需校正可见率提升>=20个百分点且90%区间排除0，护栏不过界。API序号、共享CPP/App聚合、缺原生前置或真正对照均不可判won。",
+  "stop_loss": "版本、批准/可见状态、MD5、图序、文案或旧词漂移立即停止；成熟可比FTD率或同币种收益下降>=20%或质量显著恶化，仅删除新增运动关系并双验。42完整Pacific日仍不足或混杂则inconclusive，未证实护栏恶化可保留但标尚未证明。",
+  "first_clock": null,
+  "observation_deadline": null,
+  "next_mature_check_at": null,
+  "clock_rule": "start only after this new relationship POST and independent ASC plus exact public content match; mature after14 complete Pacific days, maximum42 complete Pacific days",
+  "rollback": {
+    "method": "DELETE",
+    "path": "/v1/appCustomProductPageLocalizations/c43268b7-216a-43ea-ab97-9de0a5a65eed/relationships/searchKeywords",
+    "body": {
+      "data": [
+        {
+          "type": "appKeywords",
+          "id": "运动"
+        }
+      ]
+    },
+    "scope": "only新增运动; preserve骑行、全部创意及默认页",
+    "phase": "separately bound pub configure after fresh identity/ownership preflight; require ASC/public double verification"
+  },
+  "first_payment_clock_preservation": "Existing family/App first-payment clocks remain unchanged; current free units are not revenue. Historical positive report day2026-07-25/customer sales CNY60/proceeds CNY44.35 retained, actual order time unknown.",
+  "pre_registered_at": "2026-10-05T22:56:07.991171+08:00"
+}

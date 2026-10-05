@@ -1,0 +1,219 @@
+{
+  "schema_version": 2,
+  "product": {
+    "name": "晚风骑行",
+    "platform": "ios",
+    "version": "0.0.2.1",
+    "root": "/Users/pocket/Documents/project/running"
+  },
+  "source": {
+    "commit": "",
+    "commit_policy": "resolve_at_preflight",
+    "require_clean": true
+  },
+  "platform_config": {
+    "ios": {
+      "store_platform": "IOS",
+      "bundle_id": "net.ayqy.running",
+      "release_surface": "custom_product_page",
+      "custom_product_page_config": "/Users/pocket/Documents/project/running/docs/aso/cpp/sport-zh-keyword-20261005-ff0908.json"
+    }
+  },
+  "metadata": {},
+  "rules_researched": [
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-05",
+      "claim": "Custom product pages can use distinct screenshots, promotional text, deep links, unique URLs, and assigned search keywords after App Review.",
+      "topic": "lifecycle",
+      "evidence_kind": "direct",
+      "snapshot_evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/apple-rules-web.json"
+    },
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-05",
+      "claim": "Custom product pages may use screenshots and promotional text tailored to a specific audience; reuse the bound approved task screenshots and write truthful CPP-only task copy.",
+      "topic": "assets",
+      "evidence_kind": "direct",
+      "snapshot_evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/apple-rules-web.json"
+    },
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-05",
+      "claim": "A custom product page must be approved before it can be made publicly available; configuration and review submission are separate from public release.",
+      "topic": "review",
+      "evidence_kind": "direct",
+      "snapshot_evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/apple-rules-web.json"
+    },
+    {
+      "url": "https://developer.apple.com/help/app-store-connect/create-custom-product-pages/configure-multiple-product-page-versions",
+      "checked_at": "2026-10-05",
+      "claim": "Keywords from latest approved app version can be assigned at any time; CPP searchable only after approved and visible. Existing approved relation append does not create a new CPP creative version.",
+      "topic": "lifecycle",
+      "evidence_kind": "direct",
+      "snapshot_evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/apple-keyword-rules-web.json"
+    }
+  ],
+  "growth": {
+    "keyword_candidates": [
+      {
+        "query": "运动",
+        "intent": "手动开启骑行轨迹记录并回看历史、距离、均速和用时",
+        "relevance": "真实骑行运动记录、历史和累计里程，公开查询目标未见；不证明原生排名或流量。",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/query-opportunity-pool.json",
+        "evidence_kind": "direct",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 3,
+          "proof_strength": 4,
+          "differentiation": 3,
+          "policy_safety": 5
+        }
+      },
+      {
+        "query": "骑行运动",
+        "intent": "手动开启骑行轨迹记录并回看历史、距离、均速和用时",
+        "relevance": "真实骑行运动记录、历史和累计里程，公开查询目标未见；不证明原生排名或流量。",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/query-opportunity-pool.json",
+        "evidence_kind": "direct",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 5,
+          "proof_strength": 4,
+          "differentiation": 3,
+          "policy_safety": 5
+        }
+      },
+      {
+        "query": "骑行记录",
+        "intent": "手动开启骑行轨迹记录并回看历史、距离、均速和用时",
+        "relevance": "真实骑行运动记录、历史和累计里程，公开查询目标未见；不证明原生排名或流量。",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/query-opportunity-pool.json",
+        "evidence_kind": "direct",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 5,
+          "proof_strength": 4,
+          "differentiation": 3,
+          "policy_safety": 5
+        }
+      }
+    ],
+    "claim_evidence": [
+      {
+        "claim": "运动关系只承接骑行记录、距离、轨迹和历史，旧CPP文案全部不变",
+        "source": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/approved-asset-reuse.json; lib/history.dart; lib/dashboard.dart",
+        "evidence_kind": "direct"
+      }
+    ],
+    "asset_reuse_inventory": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/approved-asset-reuse.json"
+  },
+  "category_assessment": {
+    "selected": "Utilities",
+    "alternatives": [
+      "Sports"
+    ],
+    "rationale": "Preserve current public category for one keyword relation; sports fit is a separate eligible-version decision.",
+    "evidence_kind": "inference"
+  },
+  "qualification_assessment": [
+    {
+      "id": "app-store-connect-auth",
+      "name": "Managed Login official API probe",
+      "scope": "team_once",
+      "status": "ready",
+      "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/login-receipt-refresh.json",
+      "evidence_kind": "direct"
+    },
+    {
+      "id": "approved-visible-template",
+      "name": "Current live0.0.2.1 approved visible Chinese CPP, unique sport relation and five unchanged originals",
+      "scope": "version_each",
+      "status": "ready",
+      "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/precise-lock-and-qualification.json",
+      "evidence_kind": "direct"
+    }
+  ],
+  "assets": [],
+  "artifacts": [],
+  "rejection_plan": {
+    "official_rule_map": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0908/cycle-09/apple-rules-web.json",
+    "code_evidence_paths": "lib/history.dart; lib/dashboard.dart",
+    "communication_position": "Respond only to a future actual Apple finding",
+    "code_change_strategy": "No core/code/build changes in this relation-only operation"
+  },
+  "automation": {
+    "preflight": {
+      "commands": [
+        {
+          "label": "preflight: 晚风骑行0.0.2.1 US/zh-Hans append运动 only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "preflight",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/sport-zh-keyword-20261005-ff0908.json",
+            "--evidence",
+            "{evidence_dir}/cpp-preflight.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 600,
+          "read_only": true
+        }
+      ],
+      "covers": []
+    },
+    "configure": {
+      "commands": [
+        {
+          "label": "configure: 晚风骑行0.0.2.1 US/zh-Hans append运动 only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "configure",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/sport-zh-keyword-20261005-ff0908.json",
+            "--evidence",
+            "{evidence_dir}/cpp-configure.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 900
+        }
+      ],
+      "covers": [
+        "custom_product_page",
+        "screenshot_clone",
+        "search_keyword_binding",
+        "terminal_status"
+      ]
+    },
+    "status": {
+      "commands": [
+        {
+          "label": "status: 晚风骑行0.0.2.1 US/zh-Hans append运动 only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "status",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/sport-zh-keyword-20261005-ff0908.json",
+            "--evidence",
+            "{evidence_dir}/cpp-status.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 600,
+          "read_only": true
+        }
+      ],
+      "covers": [
+        "terminal_status"
+      ]
+    }
+  }
+}

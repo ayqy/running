@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "kind": "pub.ios-custom-product-page",
+  "task": "FF-0908",
+  "app_id": "6743190417",
+  "bundle_id": "net.ayqy.running",
+  "sku": "app_running",
+  "version": "0.0.2.1",
+  "app_store_version_id": "fc48559d-f2d7-4741-8f2f-9d485da1ea5a",
+  "source_localization_id": "77379838-664a-43ff-8672-8fd4d0a620fe",
+  "locale": "zh-Hans",
+  "storefront": "US",
+  "page_name": "Cycling History ZH",
+  "experiment_id": "running-ios-20261005-us-zh-hans-cpp-sport",
+  "mode": "append_keyword_only",
+  "baseline_keywords": [
+    "骑行"
+  ],
+  "keywords": [
+    "骑行",
+    "运动"
+  ],
+  "expected_page_id": "5b18e483-13f5-4c51-ac58-5751e2cfdd1c",
+  "expected_page_version_id": "f6800ad2-9eae-4120-8dd5-87b0bc359a13",
+  "expected_localization_id": "c43268b7-216a-43ea-ab97-9de0a5a65eed",
+  "baseline_promotional_text_hash": "362f5a850836311c4de31434bb6e76cf1aa710088e3c438fa0afb5b0977bbb2f",
+  "baseline_screenshots_hash": "69f49865a4369834ff854d8a9c66814f64a8a6bf493f28b44b7ed7633ff59210",
+  "variable": "keyword_relationship:运动",
+  "audience": "US/zh-Hans希望记录骑行运动轨迹、距离、均速和用时并回看历史的用户；运动泛词含其他运动意图，全部使用同zh-Hans/fallback CPP地区可能treated，US仅主观测切片。",
+  "prediction": "仅追加运动关系并冻结全部现有内容后，运动/骑行运动/骑行记录查询簇在至少14个完整Pacific日和可比原生前置样本、ITS及真正未处理对照齐备时，原生前20位可见率校正增加至少20个百分点，首次下载、质量与分币种收益护栏不恶化。",
+  "sample_gate": "至少14个完整Pacific日；三查询各28份同US/zh-Hans固定原生iPhone/系统/近似时段快照及可比前置样本，真正未处理的查询/locale/storefront对照和ITS；100同定义Unique/search_blended曝光、10FTD和完整前后Downloads/Sales为最低基数。won需校正可见率提升>=20个百分点且90%区间排除0，护栏不过界。API序号、共享CPP/App聚合、缺原生前置或真正对照均不可判won。",
+  "loss_limit": "版本、批准/可见状态、MD5、图序、文案或旧词漂移立即停止；成熟可比FTD率或同币种收益下降>=20%或质量显著恶化，仅删除新增运动关系并双验。42完整Pacific日仍不足或混杂则inconclusive，未证实护栏恶化可保留但标尚未证明。",
+  "control": "冻结默认中文语音promo和全部元数据、所有五张图、骑行关系及其他App旧关系/审核。新增词与原promo/骑行词为不同物理变量；运动/骑行运动/骑行记录可能重叠treated，均不作为未处理对照。共享CPP/App聚合从追加后混杂；对旧对象只加旁路事件，保留原假设/首钟/首款时钟。只有可证明未接收同CPP的人群和14日前置才能作为真正对照，否则inconclusive。",
+  "asset_reuse_reason": "批准前三图已明确展示骑行运动历史、实时轨迹和累计里程；全部五图MD5/尺寸/公开RGBA匹配，原字节/图序/文案保留。仅承接骑行任务，不声称支持竞品的路线规划、设备同步或全品类运动。"
+}
