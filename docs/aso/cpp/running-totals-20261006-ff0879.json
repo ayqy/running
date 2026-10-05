@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "kind": "pub.ios-custom-product-page",
+  "task": "FF-0879",
+  "experiment_id": "running-ios-20261006-us-zh-hans-cpp-running-totals",
+  "app_id": "6743190417",
+  "bundle_id": "net.ayqy.running",
+  "sku": "app_running",
+  "version": "0.0.2.1",
+  "app_store_version_id": "fc48559d-f2d7-4741-8f2f-9d485da1ea5a",
+  "source_localization_id": "77379838-664a-43ff-8672-8fd4d0a620fe",
+  "locale": "zh-Hans",
+  "storefront": "US",
+  "page_name": "Running Totals ZH",
+  "keywords": [
+    "跑步"
+  ],
+  "mode": "clone_page",
+  "promotional_text": "在历史记录的累计页查看跑步里程、次数与累计时长，骑行数据单独统计。在历史记录中选择跑步或骑行类别；运动播报可按公里数或时间设置，定位需设备授权。",
+  "screenshot_order": {
+    "APP_IPHONE_67": [
+      3,
+      5,
+      2,
+      1,
+      4
+    ]
+  },
+  "clone_timeout_seconds": 300,
+  "poll_seconds": 5,
+  "variable": "custom_product_page:Running Totals ZH",
+  "audience": "希望回看累计跑步里程、次数及累计时长的简体中文跑者；所有收到同zh-Hans/fallback CPP的可售地区均可能treated，US仅观测切片。",
+  "prediction": "仅新建跑步累计意图CPP并唯一绑定跑步目录词，批准公开后至少14个完整Pacific日且可比原生前置、真实未处理对照与ITS齐备时，目标查询簇原生前20位可见率经校正提高至少20个百分点，首次下载、质量和同币种收益不恶化。",
+  "sample_gate": "至少14完整Pacific日；三查询各28份US/zh-Hans固定原生iPhone/系统/近似时段配对快照及可比前置；100同口径Unique/search_blended曝光、10首次下载、完整Downloads/Sales和质量、ITS与证实未处理对照。won还需校正可见率提升至少20个百分点且90%区间排除0。原生基线、对照或完整指标缺失不能won；42完整日不足则inconclusive。",
+  "loss_limit": "source版本、目录所有权、原图hash、旧关系或审核漂移即停止；成熟可比首次下载率或同币种收益下降至少20%且证据充分，或明显质量伤害，仅隐藏新增Running Totals ZH并后台/公开双验。42完整Pacific日不足则inconclusive，未证实护栏恶化可保留但标未证明。",
+  "control": "默认文案、名称/副标题/keywords/类别、五图、Cycling History ZH及骑行/运动关系全部冻结。跑步和泛运动及旧骑行相邻查询可能重叠treated；旧实验曾列跑步轨迹为趋势旁证，新增页生效后不能再作未处理对照。所有同locale/fallback地区和App聚合均可能污染；需另证未处理人群及可比前置，否则不判won。旧60对象、首钟和首款时钟不改，只旁记污染。",
+  "asset_reuse_reason": "首图复用当前批准第3图，真实显示177.3 km、34次、15.9小时跑步累计及单列骑行累计；第二图设置包含公里/时间播报；第三图历史包含跑步入口，但当前选中骑行。全页明确骑行亦支持，不把骑行记录或轨迹冒充跑步结果，不承诺训练计划、实时亲友语音、Health/Watch同步或免费。"
+}
