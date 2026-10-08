@@ -1,0 +1,285 @@
+{
+  "schema_version": 2,
+  "product": {
+    "name": "晚风骑行",
+    "platform": "ios",
+    "version": "0.0.2.1",
+    "root": "/Users/pocket/Documents/project/running"
+  },
+  "source": {
+    "commit": "",
+    "commit_policy": "resolve_at_preflight",
+    "require_clean": true
+  },
+  "platform_config": {
+    "ios": {
+      "store_platform": "IOS",
+      "bundle_id": "net.ayqy.running",
+      "release_surface": "custom_product_page",
+      "custom_product_page_config": "/Users/pocket/Documents/project/running/docs/aso/cpp/running-totals-20261006-ff0879.json"
+    }
+  },
+  "metadata": {},
+  "rules_researched": [
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-08",
+      "claim": "Custom product pages can use distinct screenshots, promotional text, deep links, unique URLs, and assigned search keywords after App Review.",
+      "topic": "lifecycle",
+      "evidence_kind": "direct",
+      "snapshot_evidence": "/Users/pocket/Documents/project/fangfang/.fangfang/artifacts/FF-0968/cycle-6/apple-web-recheck.json"
+    },
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-08",
+      "claim": "Custom product pages may use screenshots and promotional text tailored to a specific audience; reuse the bound approved task screenshots and write truthful CPP-only task copy.",
+      "topic": "assets",
+      "evidence_kind": "direct",
+      "snapshot_evidence": "/Users/pocket/Documents/project/fangfang/.fangfang/artifacts/FF-0968/cycle-6/apple-web-recheck.json"
+    },
+    {
+      "url": "https://developer.apple.com/app-store/custom-product-pages/",
+      "checked_at": "2026-10-08",
+      "claim": "A custom product page must be approved before it can be made publicly available; configuration and review submission are separate from public release.",
+      "topic": "review",
+      "evidence_kind": "direct",
+      "snapshot_evidence": "/Users/pocket/Documents/project/fangfang/.fangfang/artifacts/FF-0968/cycle-6/apple-web-recheck.json"
+    },
+    {
+      "url": "https://developer.apple.com/help/app-store-connect/manage-submissions-to-app-review/submit-a-custom-product-page/",
+      "checked_at": "2026-10-08",
+      "claim": "A CPP can be submitted separately for an approved iOS app; screenshots, previews, promotional text and keywords cannot be modified while under review.",
+      "topic": "lifecycle",
+      "evidence_kind": "direct",
+      "snapshot_evidence": "/Users/pocket/Documents/project/fangfang/.fangfang/artifacts/FF-0968/cycle-6/apple-web-recheck.json"
+    }
+  ],
+  "growth": {
+    "keyword_candidates": [
+      {
+        "query": "跑步里程",
+        "intent": "回看累计跑过距离、次数与用时",
+        "relevance": "当前批准图和源码证实累计跑步数据及设置；目录仅绑定既有跑步，长尾仅监测。",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-current-asset-public-evidence.json; /Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-zh-query-research/query-snapshots.json",
+        "evidence_kind": "direct",
+        "score_kind": "inference",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 4,
+          "proof_strength": 4,
+          "differentiation": 2,
+          "policy_safety": 5
+        },
+        "native_rank": "unknown",
+        "search_volume": "unknown"
+      },
+      {
+        "query": "跑步记录",
+        "intent": "按类别回看已完成运动记录",
+        "relevance": "当前批准图和源码证实累计跑步数据及设置；目录仅绑定既有跑步，长尾仅监测。",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-current-asset-public-evidence.json; /Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-zh-query-research/query-snapshots.json",
+        "evidence_kind": "direct",
+        "score_kind": "inference",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 4,
+          "proof_strength": 3,
+          "differentiation": 2,
+          "policy_safety": 5
+        },
+        "native_rank": "unknown",
+        "search_volume": "unknown"
+      },
+      {
+        "query": "跑步语音",
+        "intent": "选择公里或时间运动播报",
+        "relevance": "当前批准图和源码证实累计跑步数据及设置；目录仅绑定既有跑步，长尾仅监测。",
+        "proof": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-current-asset-public-evidence.json; /Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-zh-query-research/query-snapshots.json",
+        "evidence_kind": "direct",
+        "score_kind": "inference",
+        "scores": {
+          "product_relevance": 5,
+          "user_intent": 4,
+          "proof_strength": 3,
+          "differentiation": 2,
+          "policy_safety": 5
+        },
+        "native_rank": "unknown",
+        "search_volume": "unknown"
+      }
+    ],
+    "claim_evidence": [
+      {
+        "claim": "在历史记录的累计页查看跑步里程、次数与累计时长，骑行数据单独统计。在历史记录中选择跑步或骑行类别；运动播报可按公里数或时间设置，定位需设备授权。",
+        "source": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-current-asset-public-evidence.json; lib/history.dart:186; lib/settings.dart; lib/main.dart:256",
+        "evidence_kind": "direct"
+      }
+    ],
+    "asset_reuse_inventory": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-approved-asset-reuse.json"
+  },
+  "category_assessment": {
+    "selected": "Utilities",
+    "alternatives": [
+      "Sports"
+    ],
+    "rationale": "preserve current shipped categories for CPP-only action",
+    "evidence_kind": "inference"
+  },
+  "qualification_assessment": [
+    {
+      "id": "current-login",
+      "name": "本轮官方API认证",
+      "scope": "team_once",
+      "status": "ready",
+      "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/login-authenticate.json",
+      "evidence_kind": "direct"
+    },
+    {
+      "id": "running-totals-approved-source",
+      "name": "0.0.2.1批准源图及独立跑步目录词",
+      "scope": "version_each",
+      "status": "ready",
+      "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-qualification.json",
+      "evidence_kind": "direct"
+    },
+    {
+      "id": "US-market-availability",
+      "name": "当前美国主观测区可售",
+      "scope": "version_each",
+      "status": "ready",
+      "evidence": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-current-asset-public-evidence.json",
+      "evidence_kind": "direct"
+    }
+  ],
+  "assets": [],
+  "artifacts": [],
+  "rejection_plan": {
+    "official_rule_map": "/Users/pocket/Documents/project/24h-studio/.24h-studio/aso/deliveries/FF-0879/cycle-29/running-zh-analysis-web.json",
+    "code_evidence_paths": "lib/history.dart; lib/settings.dart; lib/main.dart",
+    "communication_position": "只依据未来真实Apple finding，不预设拒审原因。",
+    "code_change_strategy": "本任务只新独立CPP与单项提审；禁止代码、构建、价格及权益更改。"
+  },
+  "automation": {
+    "preflight": {
+      "commands": [
+        {
+          "label": "preflight: 晚风骑行0.0.2.1 US/zh-Hans Running Totals ZH independent CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "preflight",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/running-totals-20261006-ff0879.json",
+            "--evidence",
+            "{evidence_dir}/cpp-preflight.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 600,
+          "read_only": true
+        }
+      ],
+      "covers": []
+    },
+    "configure": {
+      "commands": [
+        {
+          "label": "configure: 晚风骑行0.0.2.1 US/zh-Hans Running Totals ZH independent CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "configure",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/running-totals-20261006-ff0879.json",
+            "--evidence",
+            "{evidence_dir}/cpp-configure.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 900
+        }
+      ],
+      "covers": [
+        "custom_product_page",
+        "screenshot_clone",
+        "search_keyword_binding",
+        "terminal_status"
+      ]
+    },
+    "submit": {
+      "commands": [
+        {
+          "label": "submit: 晚风骑行0.0.2.1 US/zh-Hans Running Totals ZH independent CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "submit",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/running-totals-20261006-ff0879.json",
+            "--evidence",
+            "{evidence_dir}/cpp-submit.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 900
+        }
+      ],
+      "covers": [
+        "custom_product_page_review_submit",
+        "terminal_status"
+      ]
+    },
+    "release": {
+      "commands": [
+        {
+          "label": "release: 晚风骑行0.0.2.1 US/zh-Hans Running Totals ZH independent CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "release",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/running-totals-20261006-ff0879.json",
+            "--evidence",
+            "{evidence_dir}/cpp-release.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 900
+        }
+      ],
+      "covers": [
+        "custom_product_page_visibility",
+        "public_storefront_e2e",
+        "terminal_status"
+      ]
+    },
+    "status": {
+      "commands": [
+        {
+          "label": "status: 晚风骑行0.0.2.1 US/zh-Hans Running Totals ZH independent CPP only",
+          "argv": [
+            "/Users/pocket/.venv/bin/python3",
+            "{pub_root}/scripts/ios_custom_product_page.py",
+            "status",
+            "{manifest}",
+            "--config",
+            "/Users/pocket/Documents/project/running/docs/aso/cpp/running-totals-20261006-ff0879.json",
+            "--evidence",
+            "{evidence_dir}/cpp-status.json"
+          ],
+          "cwd": ".",
+          "required_env": [],
+          "timeout_seconds": 600,
+          "read_only": true
+        }
+      ],
+      "covers": [
+        "terminal_status"
+      ]
+    }
+  }
+}
